@@ -1,2 +1,14 @@
-body {background-color: #000000;
-    color: #ffffff;}
+body {
+    background-color: black;
+    color: #ffffff;
+    font-family: "Grenze";
+    font-style: "normal";
+    font-size: 36px;
+    line-height: 120%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
