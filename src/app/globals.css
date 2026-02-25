@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  :root {
+    --background: #fafaf9;
+    --foreground: #1c1917;
+    --accent: #6EEB49;
+    --accent-hover: #5cd638;
+    --muted: #f5f5f4;
+    --muted-foreground: #57534e;
+    --border: #e7e5e4;
+    --card: #ffffff;
+    --card-foreground: #1c1917;
+    --radius: 0.375rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2 {
+    @apply font-serif;
+  }
+
+  /* Nav: ensure link hover and no global overrides */
+  [data-nav="root"] a[href^="/"]:not([href="/"]) {
+    cursor: pointer;
+  }
+  [data-nav="root"] ul a:hover {
+    color: #1c1917;
+  }
+}
