@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
 
@@ -7,32 +6,22 @@ export default function AboutPage() {
     <>
       <Section className="py-6 pt-8 md:py-8 md:pt-10">
         <Container className="max-w-3xl">
-          <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
-            <figure className="w-full shrink-0 sm:w-56 md:w-64">
-              <Image
-                src="/images/professional-portrait.png"
-                alt="Sean Crisman"
-                width={320}
-                height={400}
-                className="rounded-lg border border-border object-cover shadow-sm"
-              />
-            </figure>
-            <div className="min-w-0 flex-1">
-              <h1 className="font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                Designing systems that turn complexity into confidence.
-              </h1>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-                I&apos;m Sean Crisman, a product design leader with over 12 years of
-                experience building AI platforms, enterprise systems, and high-scale
-                digital products. My work lives at the intersection of product
-                strategy, systems thinking, and hands-on execution.
-              </p>
-              <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                I believe the most powerful products don&apos;t just function well —
-                they create clarity. And clarity builds trust.
-              </p>
-            </div>
-          </div>
+          <h1 className="font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+            Designing systems that turn complexity into confidence.
+          </h1>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            I&apos;m Sean Crisman, a Lead Product Designer with over 12 years of
+            experience building AI platforms, enterprise systems, and high-scale
+            SaaS products.
+          </p>
+          <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+            I turn ambiguity into working systems. Strategy into shipped
+            software. Complexity into usable structure.
+          </p>
+          <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+            The best products do not just function. They create clarity. And
+            clarity builds trust.
+          </p>
         </Container>
       </Section>
 
@@ -42,26 +31,36 @@ export default function AboutPage() {
             Philosophy
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Over the past decade, I&apos;ve worked with teams building
-            cybersecurity platforms, AI-driven tools, livestream ecosystems, and
-            SaaS systems. Across every domain, one principle remains consistent:
+            I work in complex environments. Cybersecurity platforms. AI agent
+            workflows. Enterprise rule engines. Multi-tenant SaaS systems.
           </p>
-          <p className="mt-4 font-serif text-xl font-semibold text-foreground">
+          <p className="mt-4 font-medium text-foreground leading-relaxed">
             Complexity is inevitable. Confusion is not.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Whether designing AI agent workflows, enterprise rule builders, or
-            scalable design systems, my goal is to transform fragmented,
-            high-stakes workflows into structured, intuitive experiences.
+            My job is to architect experiences that make high-stakes systems feel
+            structured and intentional. I design for scale from day one, thinking
+            in data models, state management, information architecture, and
+            system constraints, not just surface-level UI.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
             I focus on:
           </p>
-          <ul className="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
-            <li>Aligning product strategy with user reality</li>
-            <li>Designing systems, not just screens</li>
-            <li>Creating interfaces that scale with complexity</li>
-            <li>Shipping work that drives measurable outcomes</li>
+          <ul className="mt-3 list-disc space-y-1.5 pl-6 text-muted-foreground leading-relaxed">
+            <li>
+              Translating product strategy into system-level interaction models
+            </li>
+            <li>
+              Designing extensible patterns across features and teams
+            </li>
+            <li>
+              Reducing cognitive load in high-density enterprise interfaces
+            </li>
+            <li>
+              Shipping work that produces measurable business impact, including
+              adoption growth, workflow acceleration, and revenue-supporting
+              platform capabilities
+            </li>
           </ul>
         </Container>
       </Section>
@@ -69,14 +68,40 @@ export default function AboutPage() {
       <Section id="how-i-work" className="py-6 md:py-8">
         <Container className="max-w-3xl">
           <h2 className="font-serif text-2xl font-semibold tracking-tight">
-            How I work
+            How I Work
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            I operate at three levels: <strong className="text-foreground">Vision</strong>,{" "}
-            <strong className="text-foreground">Systems</strong>, and{" "}
-            <strong className="text-foreground">Execution</strong>. I&apos;m
-            comfortable moving between executive strategy discussions and
-            detailed interaction design.
+            I operate across three layers: Direction, Systems, Execution.
+          </p>
+
+          <h3 className="mt-8 font-serif text-lg font-semibold tracking-tight">
+            Direction
+          </h3>
+          <p className="mt-2 text-muted-foreground leading-relaxed">
+            I help clarify product intent and align it to real user workflows and
+            technical feasibility.
+          </p>
+
+          <h3 className="mt-6 font-serif text-lg font-semibold tracking-tight">
+            Systems
+          </h3>
+          <p className="mt-2 text-muted-foreground leading-relaxed">
+            I design scalable architectures, reusable components, and interaction
+            frameworks that engineering teams can build on with confidence.
+          </p>
+
+          <h3 className="mt-6 font-serif text-lg font-semibold tracking-tight">
+            Execution
+          </h3>
+          <p className="mt-2 text-muted-foreground leading-relaxed">
+            I stay close to production. I prototype in React and Next.js when
+            necessary. I use tools like Cursor and AI-assisted workflows to
+            translate design thinking directly into working front-end code. I
+            care about tokens, component APIs, accessibility, performance, and
+            implementation detail because design does not end in Figma.
+          </p>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            I lead through output, clarity, and ownership. Titles are secondary.
           </p>
         </Container>
       </Section>
@@ -87,9 +112,9 @@ export default function AboutPage() {
             Personal
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Outside of product design, I value discipline and long-term
-            thinking. I train for endurance races, follow Formula 1, and
-            experiment with emerging technologies.
+            Outside of product design, I train for endurance races, follow
+            Formula 1, and experiment with emerging technologies. Discipline
+            compounds.
           </p>
         </Container>
       </Section>
