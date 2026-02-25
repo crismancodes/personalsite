@@ -30,7 +30,7 @@ export function Navbar() {
   const pathname = usePathname();
   const activeHref = getActiveHref(pathname);
   const containerRef = useRef<HTMLUListElement>(null);
-  const linkRefs = useRef<Record<string, HTMLSpanElement | null>>({});
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0, visible: false });
 
   const updatePill = () => {
@@ -140,7 +140,7 @@ export function Navbar() {
               padding: 0,
             }}
           >
-            {/* Sliding pill behind active link */}
+            {/* Sliding pill behind active link — z-index 0 so links stay on top */}
             <span
               role="presentation"
               aria-hidden
@@ -155,41 +155,37 @@ export function Navbar() {
                 backgroundColor: GREEN,
                 opacity: pillStyle.visible ? 1 : 0,
                 pointerEvents: "none",
+                zIndex: 0,
                 transition: "left 0.3s ease-out, width 0.3s ease-out, opacity 0.2s ease-out",
               }}
             />
             {navItems.map(({ href, label }) => {
               const isActive = activeHref === href;
               return (
-                <li key={href} style={{ display: "inline-block" }}>
-                  <span
+                <li key={href} style={{ display: "inline-block", position: "relative", zIndex: 1 }}>
+                  <Link
                     ref={(el) => {
                       linkRefs.current[href] = el;
                     }}
-                    style={{ display: "inline-block" }}
+                    href={href}
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      padding: "0.5rem 0.75rem",
+                      fontSize: "0.875rem",
+                      fontWeight: 500,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.025em",
+                      borderRadius: "6px",
+                      textDecoration: "none",
+                      outline: "none",
+                      transition: "color 0.2s ease-out, background-color 0.2s ease-out",
+                      backgroundColor: isActive ? GREEN : "transparent",
+                      color: isActive ? DARK : MUTED,
+                    }}
                   >
-                    <Link
-                      href={href}
-                      style={{
-                        position: "relative",
-                        zIndex: 10,
-                        display: "block",
-                        padding: "0.5rem 0.75rem",
-                        fontSize: "0.875rem",
-                        fontWeight: 500,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.025em",
-                        borderRadius: "6px",
-                        textDecoration: "none",
-                        outline: "none",
-                        transition: "color 0.2s ease-out, background-color 0.2s ease-out",
-                        backgroundColor: isActive ? GREEN : "transparent",
-                        color: isActive ? DARK : MUTED,
-                      }}
-                    >
-                      {label}
-                    </Link>
-                  </span>
+                    {label}
+                  </Link>
                 </li>
               );
             })}
