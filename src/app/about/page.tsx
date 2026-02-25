@@ -86,22 +86,11 @@ export default function AboutPage() {
           <h2 className="font-serif text-2xl font-semibold tracking-tight">
             Personal
           </h2>
-          <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
-            <p className="mt-0 min-w-0 flex-1 text-muted-foreground leading-relaxed">
-              Outside of product design, I value discipline and long-term
-              thinking. I train for endurance races, follow Formula 1, and
-              experiment with emerging technologies.
-            </p>
-            <figure className="w-full shrink-0 sm:w-72">
-              <Image
-                src="/images/running-illustration.png"
-                alt="Running illustration"
-                width={400}
-                height={400}
-                className="rounded-lg object-contain"
-              />
-            </figure>
-          </div>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Outside of product design, I value discipline and long-term
+            thinking. I train for endurance races, follow Formula 1, and
+            experiment with emerging technologies.
+          </p>
         </Container>
       </Section>
     </>
