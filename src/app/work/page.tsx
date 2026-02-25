@@ -13,7 +13,10 @@ import {
 } from "@/components/ui/card";
 import { projects } from "@/lib/projects";
 
+export const dynamic = "force-dynamic";
+
 export default function WorkIndexPage() {
+  const list = Array.isArray(projects) ? projects : [];
   return (
     <Section className="pt-8 md:pt-10">
       <Container>
@@ -24,7 +27,7 @@ export default function WorkIndexPage() {
           Case studies and selected projects.
         </p>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-          {projects.map((project) => (
+          {list.map((project) => (
             <Card
               key={project.slug}
               className="flex flex-col transition-shadow hover:shadow-md"

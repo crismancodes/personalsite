@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getProjectBySlug, projects } from "@/lib/projects";
 
+export const dynamic = "force-dynamic";
+
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
 }
@@ -16,6 +18,7 @@ export async function generateStaticParams() {
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
+  if (!slug || typeof slug !== "string") notFound();
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
