@@ -1,13 +1,11 @@
 import Link from "next/link";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -28,32 +26,30 @@ export default function WorkIndexPage() {
         </p>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
           {list.map((project) => (
-            <Card
+            <Link
               key={project.slug}
-              className="flex flex-col transition-shadow hover:shadow-md"
+              href={`/work/${project.slug}`}
+              className="block transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-lg"
             >
-              <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
-                <div className="flex flex-wrap gap-1.5 pt-2">
+              <Card className="flex flex-col h-full border-border bg-card text-card-foreground shadow-sm">
+                <CardHeader>
+                  <CardTitle>{project.title}</CardTitle>
+                  <CardDescription>{project.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1">
+                  <p className="text-sm text-muted-foreground">
+                    {project.summary}
+                  </p>
+                </CardContent>
+                <div className="flex flex-wrap gap-1.5 px-6 pb-6 pt-0">
                   {project.tags.map((tag) => (
                     <Badge key={tag} variant="pill">
                       {tag}
                     </Badge>
                   ))}
                 </div>
-              </CardHeader>
-              <CardContent className="flex-1">
-                <p className="text-sm text-muted-foreground">
-                  {project.summary}
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button variant="secondary" asChild>
-                  <Link href={`/work/${project.slug}`}>View case study</Link>
-                </Button>
-              </CardFooter>
-            </Card>
+              </Card>
+            </Link>
           ))}
         </div>
       </Container>
