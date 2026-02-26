@@ -39,7 +39,7 @@ export default function HomePage() {
       <FractalGradientBackground />
       <div className="relative z-10">
         {/* Hero */}
-        <Section className="pt-8 md:pt-10 min-h-[70vh] flex flex-col justify-center">
+        <Section className="pt-2 pb-2.5 md:pt-2.5 md:pb-3.5 min-h-[70vh] flex flex-col justify-center">
           <Container className="max-w-3xl">
             <h1 className="font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
               Designing intelligent systems that turn product complexity into
