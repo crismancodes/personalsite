@@ -74,8 +74,10 @@ export function Navbar() {
         top: 0,
         zIndex: 50,
         width: "100%",
-        borderBottom: "1px solid #e7e5e4",
-        background: "linear-gradient(to right, #f5f5f4, #e7e5e4)",
+        borderBottom: "1px solid rgba(231, 229, 228, 0.5)",
+        background: "linear-gradient(to right, rgba(245, 245, 244, 0.75), rgba(231, 229, 228, 0.6))",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
       }}
     >
       <Container>
