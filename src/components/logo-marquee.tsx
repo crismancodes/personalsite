@@ -6,7 +6,7 @@ const LOGOS = [
   { src: "/logos/crowdstrike.png", alt: "CrowdStrike" },
   { src: "/logos/appomni.svg", alt: "AppOmni" },
   { src: "/logos/resi.png", alt: "Resi" },
-  { src: "/logos/projekt202.png", alt: "Projekt202" },
+  { src: "/logos/projekt202.svg", alt: "Projekt202" },
   { src: "/logos/fedex.svg", alt: "FedEx" },
   { src: "/logos/txu.png", alt: "TXU Energy" },
 ] as const;
