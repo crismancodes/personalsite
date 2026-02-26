@@ -56,7 +56,7 @@ export default function HomePage() {
                 <Link href="#work">View selected work</Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <Link href="/about#approach">About</Link>
+                <Link href="/about">About</Link>
               </Button>
             </div>
           </Container>
