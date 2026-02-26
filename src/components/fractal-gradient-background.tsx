@@ -56,8 +56,8 @@ export function FractalGradientBackground() {
       className="pointer-events-none fixed inset-0 overflow-hidden"
       aria-hidden
     >
-      {/* Layered gradient blobs — fractal maze feel */}
-      <div className="absolute inset-0 opacity-[0.85]">
+      {/* Layered gradient blobs — saturated green, light and airy, no dark areas */}
+      <div className="absolute inset-0 opacity-[0.98]">
         {blobPositions.map((blob, i) => {
           const mx = mouse.x * 0.15;
           const my = mouse.y * 0.15;
@@ -65,10 +65,10 @@ export function FractalGradientBackground() {
           const cy = (blob.y * 100 + my * 20).toFixed(2);
           const colors =
             i % 3 === 0
-              ? "var(--accent)"
+              ? "rgba(200, 255, 190, 0.92)"
               : i % 3 === 1
-                ? "var(--muted)"
-                : "var(--background)";
+                ? "rgba(120, 220, 150, 0.82)"
+                : "rgba(160, 240, 180, 0.85)";
           return (
             <div
               key={i}
@@ -79,20 +79,20 @@ export function FractalGradientBackground() {
                 width: `${40 * blob.scale}%`,
                 height: `${40 * blob.scale}%`,
                 background: `radial-gradient(circle, ${colors} 0%, transparent 70%)`,
-                opacity: 0.5 + (i % 3) * 0.15,
+                opacity: 0.7 + (i % 3) * 0.12,
               }}
             />
           );
         })}
       </div>
 
-      {/* Subtle accent glow that follows cursor */}
+      {/* Accent glow that follows cursor — saturated green, bright */}
       <div
-        className="absolute size-[min(80vw,400px)] rounded-full opacity-20 blur-[80px] transition-all duration-300 ease-out"
+        className="absolute size-[min(80vw,400px)] rounded-full opacity-38 blur-[80px] transition-all duration-300 ease-out"
         style={{
           left: `calc(${mouse.x * 100}% - min(40vw, 200px))`,
           top: `calc(${mouse.y * 100}% - min(40vw, 200px))`,
-          background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(170, 255, 180, 0.55) 0%, transparent 70%)",
         }}
       />
 
