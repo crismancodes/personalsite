@@ -14,7 +14,7 @@ export default function AboutPage() {
               </h1>
               <div className="mt-6 space-y-3">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  I&apos;m Sean Crisman, a Lead Product Designer with over 12 years of
+                  I&apos;m Sean Crisman, a Lead Product Designer with 12+ years of
                   experience building AI platforms, enterprise systems, and high-scale
                   SaaS products.
                 </p>
@@ -23,7 +23,7 @@ export default function AboutPage() {
                   software. Complexity into usable structure.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  The best products do not just function. They create clarity. And
+                  The best products don&apos;t just function. They create clarity. And
                   clarity builds trust.
                 </p>
               </div>
@@ -47,17 +47,16 @@ export default function AboutPage() {
             Philosophy
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            I work in complex environments. Cybersecurity platforms. AI agent
-            workflows. Enterprise rule engines. Multi-tenant SaaS systems.
+            I work in complex environments: cybersecurity platforms, AI agent
+            workflows, enterprise rule engines, multi-tenant SaaS systems.
           </p>
           <p className="mt-4 font-medium text-foreground leading-relaxed">
             Complexity is inevitable. Confusion is not.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            My job is to architect experiences that make high-stakes systems feel
-            structured and intentional. I design for scale from day one, thinking
-            in data models, state management, information architecture, and
-            system constraints, not just surface-level UI.
+            I design for scale from day one. That means thinking in systems: data
+            models, state management, information architecture, and constraints
+            — not just surface-level UI.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
             I focus on:
@@ -67,15 +66,13 @@ export default function AboutPage() {
               Translating product strategy into system-level interaction models
             </li>
             <li>
-              Designing extensible patterns across features and teams
+              Designing extensible patterns across teams and features
             </li>
             <li>
               Reducing cognitive load in high-density enterprise interfaces
             </li>
             <li>
-              Shipping work that produces measurable business impact, including
-              adoption growth, workflow acceleration, and revenue-supporting
-              platform capabilities
+              Shipping work that drives measurable business impact
             </li>
           </ul>
         </Container>
@@ -94,7 +91,7 @@ export default function AboutPage() {
             Direction
           </h3>
           <p className="text-muted-foreground leading-relaxed">
-            I help clarify product intent and align it to real user workflows and
+            Clarifying product intent and aligning it with real user workflows and
             technical feasibility.
           </p>
 
@@ -102,7 +99,7 @@ export default function AboutPage() {
             Systems
           </h3>
           <p className="text-muted-foreground leading-relaxed">
-            I design scalable architectures, reusable components, and interaction
+            Designing scalable architectures, reusable components, and interaction
             frameworks that engineering teams can build on with confidence.
           </p>
 
@@ -110,11 +107,12 @@ export default function AboutPage() {
             Execution
           </h3>
           <p className="text-muted-foreground leading-relaxed">
-            I stay close to production. I prototype in React and Next.js when
-            necessary. I use tools like Cursor and AI-assisted workflows to
-            translate design thinking directly into working front-end code. I
-            care about tokens, component APIs, accessibility, performance, and
-            implementation detail because design does not end in Figma.
+            Staying close to production. Prototyping in React and Next.js when
+            necessary. Using tools like Cursor and AI-assisted workflows to
+            translate design thinking directly into working front-end code.
+          </p>
+          <p className="mt-4 font-medium text-foreground leading-relaxed">
+            Design does not end in Figma.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
             I lead through output, clarity, and ownership. Titles are secondary.
@@ -129,8 +127,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             Outside of product design, I train for endurance races, follow
-            Formula 1, and experiment with emerging technologies. Discipline
-            compounds.
+            Formula 1, and experiment with emerging technologies.
           </p>
         </Container>
       </Section>
