@@ -48,8 +48,9 @@ export const projects: Project[] = [
   {
     slug: "posture-management-rules",
     title: "Posture Management Rules",
-    description: "Rule builder for security and compliance posture at scale.",
-    summary: "Visual rule builder for defining and automating security posture checks across cloud and SaaS.",
+    description:
+      "Architected a visual interface for configuring scalable security and compliance controls across organizational SaaS applications.",
+    summary: "",
     tags: ["Security", "Compliance", "Rule Builder"],
     featured: true,
     contextProblem: "Security teams could not express complex posture rules without engineering; changes took weeks.",
@@ -62,8 +63,9 @@ export const projects: Project[] = [
   {
     slug: "charlotte-ai-agent-builder",
     title: "Charlotte AI Agent Builder",
-    description: "No-code builder for AI agents and workflows.",
-    summary: "Low-code environment for building, testing, and deploying AI agents with guardrails and approvals.",
+    description:
+      "Defined a no-code conversational system for creating and deploying security AI agents with guardrails and human-in-the-loop approvals.",
+    summary: "",
     tags: ["AI", "No-Code", "Workflows"],
     featured: true,
     contextProblem: "Product and ops teams needed to ship AI agents quickly without depending on engineering for every change.",
