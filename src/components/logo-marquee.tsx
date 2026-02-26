@@ -13,7 +13,7 @@ const LOGOS = [
 
 function LogoCell({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative flex h-10 w-28 shrink-0 items-center justify-center opacity-80 grayscale transition-opacity hover:opacity-100">
+    <div className="relative flex h-10 w-28 shrink-0 items-center justify-center">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
