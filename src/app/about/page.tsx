@@ -127,7 +127,8 @@ export default function AboutPage() {
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             Outside of product design, I train for endurance races, follow
-            Formula 1, and experiment with emerging technologies.
+            Formula 1, travel the world, and experiment with emerging
+            technologies.
           </p>
         </Container>
       </Section>
@@ -137,8 +138,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
             <div className="aspect-square overflow-hidden rounded-lg border border-border bg-muted">
               <Image
-                src="https://placehold.co/400x400/e7e5e4/57534e?text=1"
-                alt="Placeholder 1"
+                src="/images/neuschwanstein.png"
+                alt="Neuschwanstein Castle, Bavaria"
                 width={400}
                 height={400}
                 className="h-full w-full object-cover"
@@ -146,8 +147,8 @@ export default function AboutPage() {
             </div>
             <div className="aspect-square overflow-hidden rounded-lg border border-border bg-muted">
               <Image
-                src="https://placehold.co/400x400/e7e5e4/57534e?text=2"
-                alt="Placeholder 2"
+                src="/images/hallstatt.png"
+                alt="Hallstatt village street"
                 width={400}
                 height={400}
                 className="h-full w-full object-cover"
@@ -155,17 +156,17 @@ export default function AboutPage() {
             </div>
             <div className="aspect-square overflow-hidden rounded-lg border border-border bg-muted">
               <Image
-                src="https://placehold.co/400x400/e7e5e4/57534e?text=3"
-                alt="Placeholder 3"
+                src="/images/race-finisher.png"
+                alt="Race finisher with medal"
                 width={400}
                 height={400}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-[50%_35%]"
               />
             </div>
             <div className="aspect-square overflow-hidden rounded-lg border border-border bg-muted">
               <Image
-                src="https://placehold.co/400x400/e7e5e4/57534e?text=4"
-                alt="Placeholder 4"
+                src="/images/kyoto-torii.png"
+                alt="Torii gates, Kyoto"
                 width={400}
                 height={400}
                 className="h-full w-full object-cover"
