@@ -4,16 +4,16 @@ import "./logo-marquee.css";
 
 const LOGOS = [
   { src: "/logos/crowdstrike.png", alt: "CrowdStrike" },
-  { src: "/logos/appomni.png", alt: "AppOmni" },
+  { src: "/logos/appomni.svg", alt: "AppOmni" },
   { src: "/logos/resi.png", alt: "Resi" },
   { src: "/logos/projekt202.png", alt: "Projekt202" },
-  { src: "/logos/fedex.png", alt: "FedEx" },
+  { src: "/logos/fedex.svg", alt: "FedEx" },
   { src: "/logos/txu.png", alt: "TXU Energy" },
 ] as const;
 
 function LogoCell({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative flex h-10 w-28 shrink-0 items-center justify-center">
+    <div className="relative flex h-10 w-28 shrink-0 items-center justify-center bg-transparent">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
