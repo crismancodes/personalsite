@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { FractalGradientBackground } from "@/components/fractal-gradient-background";
+import { LogoMarquee } from "@/components/logo-marquee";
 import { getFeaturedProjects } from "@/lib/projects";
 
 const approachColumns = [
@@ -61,6 +62,8 @@ export default function HomePage() {
             </div>
           </Container>
         </Section>
+
+        <LogoMarquee />
 
         {/* Selected Work */}
         <Section id="work" className="bg-muted/30">
