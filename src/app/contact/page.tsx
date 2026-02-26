@@ -72,9 +72,9 @@ export default function ContactPage() {
           Contact
         </h1>
         <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-          Let&apos;s connect. I&apos;m open to product leadership roles,
-          advisory conversations, and collaborations at the intersection of AI
-          and complex systems.
+          Let&apos;s connect. I&apos;m open to senior and design leadership
+          roles, along with thoughtful conversations around AI, complex
+          systems, and product strategy.
         </p>
         <ul className="mt-10 space-y-4">
           <li>
