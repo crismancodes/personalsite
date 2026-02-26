@@ -113,7 +113,7 @@ export default function HomePage() {
               Approach
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Vision, systems, and execution — in balance.
+              Strategic vision grounded in systems thinking and rigorous execution.
             </p>
             <div className="mt-12 grid gap-10 md:grid-cols-3">
               {approachColumns.map((col) => (

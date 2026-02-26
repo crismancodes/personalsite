@@ -3,22 +3,34 @@
 import "./logo-marquee.css";
 
 const LOGOS = [
-  { src: "/logos/crowdstrike.png", alt: "CrowdStrike" },
-  { src: "/logos/appomni.svg", alt: "AppOmni" },
+  { src: "/logos/crowdstrike.png", alt: "CrowdStrike", large: true },
+  { src: "/logos/appomni.svg", alt: "AppOmni", large: true },
   { src: "/logos/resi.png", alt: "Resi" },
   { src: "/logos/projekt202.svg", alt: "Projekt202" },
   { src: "/logos/fedex.svg", alt: "FedEx" },
   { src: "/logos/txu.png", alt: "TXU Energy" },
 ] as const;
 
-function LogoCell({ src, alt }: { src: string; alt: string }) {
+function LogoCell({
+  src,
+  alt,
+  large,
+}: {
+  src: string;
+  alt: string;
+  large?: boolean;
+}) {
   return (
-    <div className="relative flex h-10 w-28 shrink-0 items-center justify-center bg-transparent">
+    <div className="relative flex h-14 w-36 shrink-0 items-center justify-center bg-transparent md:h-16 md:w-40">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
         alt={alt}
-        className="max-h-8 w-full object-contain object-center md:max-h-10"
+        className={
+          large
+            ? "max-h-12 w-full object-contain object-center md:max-h-14"
+            : "max-h-10 w-full object-contain object-center md:max-h-12"
+        }
         loading="lazy"
         decoding="async"
       />
@@ -32,8 +44,13 @@ function LogoStrip({ "aria-hidden": ariaHidden }: { "aria-hidden"?: boolean } = 
       className="flex shrink-0 items-center gap-10 md:gap-14"
       {...(ariaHidden && { "aria-hidden": true })}
     >
-      {LOGOS.map(({ src, alt }) => (
-        <LogoCell key={alt} src={src} alt={alt} />
+      {LOGOS.map((logo) => (
+        <LogoCell
+          key={logo.alt}
+          src={logo.src}
+          alt={logo.alt}
+          large={"large" in logo ? logo.large : undefined}
+        />
       ))}
     </div>
   );
@@ -64,8 +81,13 @@ export function LogoMarquee() {
           </div>
         </div>
         <div className="hidden flex-wrap items-center justify-center gap-10 md:gap-14 motion-reduce:flex">
-          {LOGOS.map(({ src, alt }) => (
-            <LogoCell key={alt} src={src} alt={alt} />
+          {LOGOS.map((logo) => (
+            <LogoCell
+              key={logo.alt}
+              src={logo.src}
+              alt={logo.alt}
+              large={"large" in logo ? logo.large : undefined}
+            />
           ))}
         </div>
       </div>
