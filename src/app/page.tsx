@@ -53,10 +53,10 @@ export default function HomePage() {
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Button asChild size="lg">
-                <Link href="/work">View selected work</Link>
+                <Link href="#work">View selected work</Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <Link href="/about#approach">About my approach</Link>
+                <Link href="/about#approach">About</Link>
               </Button>
             </div>
           </Container>
