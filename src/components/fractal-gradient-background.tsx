@@ -86,13 +86,13 @@ export function FractalGradientBackground() {
         })}
       </div>
 
-      {/* Accent glow that follows cursor — saturated green, bright */}
+      {/* Accent glow that follows cursor — more pronounced, vibrant green, feathered edges */}
       <div
-        className="absolute size-[min(80vw,400px)] rounded-full opacity-38 blur-[80px] transition-all duration-300 ease-out"
+        className="absolute size-[min(92vw,520px)] rounded-full opacity-60 blur-[56px] transition-all duration-300 ease-out"
         style={{
-          left: `calc(${mouse.x * 100}% - min(40vw, 200px))`,
-          top: `calc(${mouse.y * 100}% - min(40vw, 200px))`,
-          background: "radial-gradient(circle, rgba(170, 255, 180, 0.55) 0%, transparent 70%)",
+          left: `calc(${mouse.x * 100}% - min(46vw, 260px))`,
+          top: `calc(${mouse.y * 100}% - min(46vw, 260px))`,
+          background: "radial-gradient(circle, rgba(130, 255, 150, 0.72) 0%, rgba(160, 255, 170, 0.35) 45%, transparent 70%)",
         }}
       />
 
