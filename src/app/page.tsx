@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -84,13 +83,10 @@ export default function HomePage() {
                   <Card className="flex flex-col h-full border-border bg-card text-card-foreground shadow-sm">
                     <CardHeader>
                       <CardTitle>{project.title}</CardTitle>
-                      <CardDescription>{project.description}</CardDescription>
+                      <CardDescription>
+                        {project.description} {project.summary}
+                      </CardDescription>
                     </CardHeader>
-                    <CardContent className="flex-1">
-                      <p className="text-sm text-muted-foreground">
-                        {project.summary}
-                      </p>
-                    </CardContent>
                     <div className="flex flex-wrap gap-1.5 px-6 pb-6 pt-0">
                       {project.tags.map((tag) => (
                         <Badge key={tag} variant="pill">

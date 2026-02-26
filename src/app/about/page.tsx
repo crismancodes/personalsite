@@ -19,12 +19,12 @@ export default function AboutPage() {
                   SaaS products.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  I turn ambiguity into working systems. Strategy into shipped
-                  software. Complexity into usable structure.
+                  I turn ambiguity into working systems, strategy into shipped
+                  software, and complexity into usable structure.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  The best products don&apos;t just function. They create clarity. And
-                  clarity builds trust.
+                  The best products don&apos;t just function. They create
+                  clarity, and clarity builds trust.
                 </p>
               </div>
             </div>

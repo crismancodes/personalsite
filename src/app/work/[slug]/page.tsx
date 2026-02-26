@@ -39,7 +39,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
-              <Badge key={tag} variant="accent">
+              <Badge key={tag} variant="pill">
                 {tag}
               </Badge>
             ))}

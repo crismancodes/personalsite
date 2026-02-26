@@ -18,8 +18,9 @@ export const projects: Project[] = [
   {
     slug: "agentguard-ai-visibility",
     title: "AgentGuard AI Visibility",
-    description: "Visibility and control for AI agents across the enterprise.",
-    summary: "A platform for monitoring, governing, and securing AI agent usage at scale.",
+    description:
+      "Designed controls to monitor, govern, and secure AI agents and embedded AI features across SaaS platforms, enabling organizations to block or manage AI usage at scale.",
+    summary: "",
     tags: ["AI", "Enterprise", "Dashboards"],
     featured: true,
     contextProblem: "Enterprises lacked visibility into where and how AI agents were being used, creating compliance and security risks.",
@@ -31,9 +32,10 @@ export const projects: Project[] = [
   },
   {
     slug: "saas-discovery-platform",
-    title: "SaaS Discovery Platform",
-    description: "Unified discovery and evaluation for enterprise software.",
-    summary: "Helps procurement and IT find, compare, and evaluate SaaS tools with structured data and workflows.",
+    title: "SaaS Discovery & Governance",
+    description:
+      "Led the design of a distributed browser extension that surfaced shadow IT and enabled admins to review, approve, or block apps at scale.",
+    summary: "",
     tags: ["SaaS", "B2B", "Discovery"],
     featured: true,
     contextProblem: "Teams spent weeks in spreadsheets and ad-hoc tools to evaluate software; no single source of truth.",
