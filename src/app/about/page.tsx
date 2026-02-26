@@ -131,6 +131,49 @@ export default function AboutPage() {
           </p>
         </Container>
       </Section>
+
+      <Section className="py-6 md:py-8">
+        <Container className="max-w-3xl">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
+            <div className="aspect-square overflow-hidden rounded-lg border border-border bg-muted">
+              <Image
+                src="https://placehold.co/400x400/e7e5e4/57534e?text=1"
+                alt="Placeholder 1"
+                width={400}
+                height={400}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="aspect-square overflow-hidden rounded-lg border border-border bg-muted">
+              <Image
+                src="https://placehold.co/400x400/e7e5e4/57534e?text=2"
+                alt="Placeholder 2"
+                width={400}
+                height={400}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="aspect-square overflow-hidden rounded-lg border border-border bg-muted">
+              <Image
+                src="https://placehold.co/400x400/e7e5e4/57534e?text=3"
+                alt="Placeholder 3"
+                width={400}
+                height={400}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="aspect-square overflow-hidden rounded-lg border border-border bg-muted">
+              <Image
+                src="https://placehold.co/400x400/e7e5e4/57534e?text=4"
+                alt="Placeholder 4"
+                width={400}
+                height={400}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </Container>
+      </Section>
     </>
   );
 }
