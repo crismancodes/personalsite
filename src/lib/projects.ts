@@ -116,15 +116,181 @@ export const projects: Project[] = [
     slug: "siem-data-parser",
     title: "SIEM Data Parser",
     description: "Structured parsing and normalization for SIEM ingestion.",
-    summary: "Tooling to parse, normalize, and route log and event data into SIEM and data lakes.",
+    summary:
+      "Scriptable tools to parse, normalize, and route security log and event data into SIEM and data lakes.",
+    supportingLine: "CrowdStrike (pseudonym: Cybersecurity Co.)",
     tags: ["Security", "Data", "SIEM"],
     featured: false,
-    contextProblem: "Security teams struggled to onboard new log sources; parsing logic lived in code and was hard to change.",
-    objectivesMetrics: "Reduce onboarding time for new log types; support non-developer edits to parsers.",
-    myRole: "Design lead — parser config UI, mapping tables, and validation feedback.",
-    approachDecisions: "Visual mapping from raw fields to schema, with regex and transform helpers. Live preview of sample data.",
-    outcomesImpact: "New log type onboarding from days to hours; 80% of parser edits by non-engineers.",
-    whatNext: "ML-assisted field mapping and anomaly detection on parser health.",
+    heroImage: {
+      src: "/images/case-studies/siem-data-parser/parser-editor.svg",
+      alt: "Parser editor with script surface, live test logs, and Generate parser script with AI action.",
+      caption:
+        "Parser editor with script surface, live test logs, and a Generate parser script with AI action.",
+    },
+    contextProblem:
+      "Cybersecurity Co.’s customers stream large volumes of third-party security logs into the platform, but each source formats fields differently. Raw events were hard for humans to read, inconsistent for detection content, and expensive to normalize in backend code. Parser logic lived in engineer-owned scripts, so onboarding a new integration or fixing a broken parser meant opening tickets, waiting on deploys, and guessing at production behavior with little visibility into parser health.",
+    objectivesMetrics: {
+      blocks: [
+        {
+          type: "p",
+          text: "We set out clear goals across ownership, speed, visibility, and intelligence:",
+        },
+        {
+          type: "groups",
+          groups: [
+            {
+              title: "Ownership",
+              items: [
+                "Give detection engineers and analysts a first-class UI for creating and maintaining parsers without needing a code deploy.",
+                "Shift day-to-day parser edits from backend engineering into the detection engineering team.",
+              ],
+            },
+            {
+              title: "Speed & Efficiency",
+              items: [
+                "Cut the time to onboard a new log source from days to hours.",
+                "Enable live testing against real log samples so users can iterate quickly and confidently.",
+              ],
+            },
+            {
+              title: "Visibility",
+              items: [
+                "Centralize visibility into parser status, usage, and data volume in a single library.",
+                "Help teams quickly spot broken or stale parsers and prioritize fixes based on impact.",
+              ],
+            },
+            {
+              title: "Intelligence",
+              items: [
+                "Introduce AI-assisted parser generation so users can bootstrap new parsers without writing every script from scratch.",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    myRole: {
+      blocks: [
+        {
+          type: "roleGrid",
+          role: "Lead Product Designer & User Research",
+          tools: "Figma, FigJam",
+          timeline: "5 months",
+          owned: [
+            "User research with SOC analysts and detection engineers",
+            "End-to-end parser workflow mapping",
+            "Parser editor UX (script surface, tests, AI assist)",
+            "Parser library and parser details information architecture",
+            "High-fidelity prototypes and interaction design",
+            "Design specifications, QA, and implementation support",
+          ],
+          note:
+            "I led the project from discovery through launch, partnering closely with PM and staff engineers.",
+        },
+      ],
+    },
+    approachDecisions: {
+      subsections: [
+        {
+          heading: "Script-Based Editor with Live Testing",
+          blocks: [
+            {
+              type: "p",
+              text: "Rather than abstract parsing into a drag-and-drop flow, we leaned into our users’ familiarity with scripting and query languages and designed a script-based editor with live testing.",
+            },
+            {
+              type: "p",
+              text: "The editor surfaces the parser script side-by-side with test log data, pass/fail counts, and a run-tests control so users can validate changes against real log samples as they iterate.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/siem-data-parser/parser-editor-inline.svg",
+              alt: "Parser editor with script surface, live test logs, and Generate parser script with AI action.",
+              caption:
+                "Parser editor designed for detection engineers, with script surface, live test logs, and AI-assisted generation.",
+            },
+          ],
+        },
+        {
+          heading: "Parser Library as a Source of Truth",
+          blocks: [
+            {
+              type: "p",
+              text: "On top of the editor, we introduced a parser library that lists every parser across a tenant – including type (default, imported, custom), health status, 7-day data volume, and last-updated metadata.",
+            },
+            {
+              type: "p",
+              text: "Search and filters make it easy to find the parser behind a given integration and quickly understand coverage and impact across the estate.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/siem-data-parser/parser-library.svg",
+              alt: "Parser library showing parser health, type, and 7-day data volume.",
+              caption:
+                "Parser library showing health, type, 7-day data volume, and recency for every parser in a tenant.",
+            },
+          ],
+        },
+        {
+          heading: "Parser Details, Blast Radius, and AI Assist",
+          blocks: [
+            {
+              type: "p",
+              text: "From the library, a parser details view exposes richer context: parser metadata, the script and test logs, plus all data connectors currently using that parser so users can see the blast radius of any change before they edit.",
+            },
+            {
+              type: "p",
+              text: "As a fast follow, we added a ‘Generate parser script with AI’ action directly into the editor. Users paste or select example logs, click the AI button, and get a starter parser script that targets the platform’s schema conventions.",
+            },
+            {
+              type: "p",
+              text: "They can then review, tweak, and re-run tests against real sample data, keeping the script as the source of truth while dramatically reducing the time and effort to author new parsers.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/siem-data-parser/parser-details.svg",
+              alt: "Parser details view with parser metadata, script, test logs, and connected data sources.",
+              caption:
+                "Parser details view with metadata, script, test logs, and connected data sources for blast-radius awareness.",
+            },
+          ],
+        },
+      ],
+    },
+    outcomesImpact: {
+      blocks: [
+        {
+          type: "ul",
+          items: [
+            "Shifted parser ownership from backend engineers to detection engineers and analysts, with most day-to-day edits happening directly in the UI.",
+            "Cut the typical time to bring a new log source online from multiple days of back-and-forth to a same-day workflow using live tests on production-like logs.",
+            "Lowered the barrier for new parsers with the AI ‘Generate parser script’ button, providing high-quality starter scripts in seconds.",
+            "Reduced manual script authoring effort while improving confidence in changes through side-by-side testing.",
+            "Gave teams a single place to monitor parser status, spot non-functional or stale parsers, and prioritize fixes based on data volume and impact.",
+          ],
+        },
+      ],
+    },
+    whatNext: {
+      blocks: [
+        {
+          type: "p",
+          text: "Next, I’d extend the system’s intelligence and observability:",
+        },
+        {
+          type: "ul",
+          items: [
+            "Extend AI assistance beyond generation to include inline explanations of script snippets and suggested field mappings when new fields appear in logs.",
+            "Automatically detect parsing anomalies or drops so teams are alerted when parsers silently fail or degrade.",
+            "Add richer analytics around parser performance over time – error rates, dropped events, and latency – to guide optimization work.",
+            "Explore reusing this editor pattern for other data-transformation tooling in the platform so users have a consistent way to author and test data logic.",
+          ],
+        },
+      ],
+    },
   },
   {
     slug: "crowdstrike-app-platform",

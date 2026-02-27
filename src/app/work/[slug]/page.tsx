@@ -44,7 +44,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </p>
           {project.supportingLine ? (
             <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
-              {project.slug === "livestream-video-platform" ? (
+              {project.slug === "livestream-video-platform" && (
                 <Image
                   src="/logos/resi.png"
                   alt="Resi Media logo"
@@ -52,7 +52,16 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   height={40}
                   className="h-10 w-10 rounded-sm object-contain"
                 />
-              ) : null}
+              )}
+              {project.slug === "siem-data-parser" && (
+                <Image
+                  src="/logos/crowdstrike.png"
+                  alt="CrowdStrike logo"
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 rounded-sm object-contain"
+                />
+              )}
               <p>{project.supportingLine}</p>
             </div>
           ) : null}
@@ -71,7 +80,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   alt={project.heroImage.alt}
                   fill
                   sizes="(min-width: 768px) 768px, 100vw"
-                  className="object-cover"
+                  className={
+                    project.slug === "siem-data-parser"
+                      ? "object-contain"
+                      : "object-cover"
+                  }
                   priority
                 />
               </div>
@@ -304,6 +317,7 @@ function renderBlocks(blocks: NonNullable<Exclude<CaseStudySectionContent, strin
 
 function CaseStudyMediaFigure({ media }: { media: { src: string; alt: string; caption?: string } }) {
   const isLivePlayer = media.src.includes("live-player");
+  const isSiemParserImage = media.src.includes("siem-data-parser");
   return (
     <figure className="overflow-hidden rounded-lg border border-border bg-muted">
       <div className="relative aspect-video">
@@ -312,7 +326,11 @@ function CaseStudyMediaFigure({ media }: { media: { src: string; alt: string; ca
           alt={media.alt}
           fill
           sizes="(min-width: 768px) 352px, 100vw"
-          className={`object-cover ${isLivePlayer ? "object-top" : ""}`}
+          className={
+            isSiemParserImage
+              ? "object-contain"
+              : `object-cover ${isLivePlayer ? "object-top" : ""}`
+          }
         />
       </div>
       {media.caption ? (
