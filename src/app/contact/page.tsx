@@ -69,23 +69,14 @@ export default function ContactPage() {
     <Section className="pt-8 md:pt-10">
       <Container className="max-w-2xl">
         <h1 className="font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-          Contact
+          Let&apos;s Connect
         </h1>
         <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-          Let&apos;s connect. I&apos;m open to senior and design leadership
-          roles, along with thoughtful conversations around AI, complex
-          systems, and product strategy.
+          I&apos;m open to senior and design leadership roles, along with
+          thoughtful conversations around AI, complex systems, and product
+          strategy.
         </p>
         <ul className="mt-10 space-y-4">
-          <li>
-            <a
-              href="mailto:contact.seancrisman@gmail.com"
-              className={linkClass}
-            >
-              <MailIcon className="h-6 w-6 shrink-0" />
-              Email
-            </a>
-          </li>
           <li>
             <a
               href="https://www.linkedin.com/in/sean-crisman/"
@@ -95,6 +86,15 @@ export default function ContactPage() {
             >
               <LinkedInIcon className="h-6 w-6 shrink-0" />
               LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:contact.seancrisman@gmail.com"
+              className={linkClass}
+            >
+              <MailIcon className="h-6 w-6 shrink-0" />
+              Email
             </a>
           </li>
           <li>

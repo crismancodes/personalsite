@@ -1,3 +1,37 @@
+export type CaseStudyMedia = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
+export type CaseStudyBlock =
+  | { type: "p"; text: string }
+  | { type: "small"; text: string }
+  | { type: "ul"; items: string[] }
+  | { type: "groups"; groups: { title: string; items: string[] }[] }
+  | {
+      type: "roleGrid";
+      role: string;
+      tools?: string;
+      timeline?: string;
+      owned: string[];
+      note?: string;
+    };
+
+export type CaseStudySubsection = {
+  heading: string;
+  blocks: CaseStudyBlock[];
+  media?: CaseStudyMedia[];
+};
+
+export type CaseStudySectionContent =
+  | string
+  | {
+      blocks?: CaseStudyBlock[];
+      media?: CaseStudyMedia[];
+      subsections?: CaseStudySubsection[];
+    };
+
 export interface Project {
   slug: string;
   title: string;
@@ -5,12 +39,15 @@ export interface Project {
   summary: string;
   tags: string[];
   featured?: boolean;
-  contextProblem: string;
-  objectivesMetrics: string;
-  myRole: string;
-  approachDecisions: string;
-  outcomesImpact: string;
-  whatNext: string;
+  supportingLine?: string;
+  heroImage?: CaseStudyMedia;
+  contextProblem: CaseStudySectionContent;
+  objectivesMetrics: CaseStudySectionContent;
+  myRole: CaseStudySectionContent;
+  approachDecisions: CaseStudySectionContent;
+  outcomesImpact: CaseStudySectionContent;
+  whatNext: CaseStudySectionContent;
+  reflections?: CaseStudySectionContent;
   screenshots?: { src: string; alt: string }[];
 }
 
@@ -122,14 +159,352 @@ export const projects: Project[] = [
     title: "Livestream Video Platform",
     description: "End-to-end platform for professional livestreaming and VOD.",
     summary: "Encoding, delivery, and viewer experience for broadcast-grade livestream and video-on-demand.",
+    supportingLine: "Resi Media (pseudonym: Video Stream Co.)",
     tags: ["Video", "Livestream", "Platform"],
     featured: false,
-    contextProblem: "Broadcasters needed reliability, analytics, and viewer experience in one platform; tools were fragmented.",
-    objectivesMetrics: "99.9% uptime; sub-10s latency option; unified analytics and billing.",
-    myRole: "Product design — encoding workflows, analytics dashboards, and viewer player/UX.",
-    approachDecisions: "Unified dashboard for stream health, audience, and revenue. Player with quality selection and accessibility.",
-    outcomesImpact: "Uptime and latency targets met; NPS improvement for broadcasters and viewers.",
-    whatNext: "AI-driven encoding and clip generation.",
+    heroImage: {
+      src: "/images/case-studies/livestream-video-platform/player-fullscreen.png",
+      alt: "Video player in fullscreen mode",
+      caption: "Custom player designed for live and VOD playback.",
+    },
+    contextProblem: {
+      blocks: [
+        {
+          type: "p",
+          text: "Resi Media (pseudonym: Video Stream Co.) was building a live-streaming platform for broadcasters who needed enterprise-grade reliability, high video quality, and a professional viewer experience.",
+        },
+        { type: "p", text: "The challenge was fragmentation." },
+        {
+          type: "p",
+          text: "Broadcasters were using:",
+        },
+        {
+          type: "ul",
+          items: [
+            "Separate encoding tools",
+            "Disconnected analytics dashboards",
+            "Basic or white-labeled players",
+            "Manual workflows for organizing and sharing content",
+          ],
+        },
+        {
+          type: "p",
+          text: "There was no unified system connecting stream health, audience engagement, monetization, and post-stream content management.",
+        },
+        {
+          type: "p",
+          text: "The opportunity was to design an integrated platform that supported:",
+        },
+        {
+          type: "ul",
+          items: [
+            "Live broadcast reliability",
+            "Video library management",
+            "Playlist creation and sharing",
+            "A custom, branded video player",
+            "Viewer analytics and engagement",
+          ],
+        },
+        { type: "p", text: "This was not a single feature. It was a product ecosystem." },
+      ],
+      media: [
+        {
+          src: "/images/case-studies/livestream-video-platform/wireframes.png",
+          alt: "Early platform wireframes",
+          caption: "Early wireframes exploring library and playlist layouts.",
+        },
+        {
+          src: "/images/case-studies/livestream-video-platform/project-brief.png",
+          alt: "Project brief and acceptance criteria",
+          caption:
+            "Project brief and acceptance criteria I created for the playlist feature for the platform's initial release.",
+        },
+      ],
+    },
+    objectivesMetrics: {
+      blocks: [
+        { type: "p", text: "The product team aligned around measurable performance and experience goals:" },
+        {
+          type: "groups",
+          groups: [
+            {
+              title: "Reliability",
+              items: ["99.9%+ uptime target", "Optional sub-10s latency mode"],
+            },
+            {
+              title: "Operational Clarity",
+              items: ["Unified stream health dashboard", "Real-time monitoring for broadcasters"],
+            },
+            {
+              title: "Viewer Experience",
+              items: [
+                "Custom, accessible player",
+                "Multi-device responsive design",
+                "Reduced buffering and playback failures",
+              ],
+            },
+            {
+              title: "Engagement & Retention",
+              items: [
+                "Improved NPS for broadcasters",
+                "Increased average watch time",
+                "Better playlist usage and content reuse",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    myRole: {
+      blocks: [
+        {
+          type: "roleGrid",
+          role: "Lead Product Designer",
+          tools: "Figma, FigJam, Jira, Storybook",
+          timeline: "9 months",
+          owned: [
+            "Encoding workflow UX",
+            "Stream health monitoring dashboards",
+            "Video library and playlist architecture",
+            "Custom video player design",
+            "Microinteractions and responsive behavior",
+            "Cross-functional alignment with engineering and product",
+          ],
+          note: "This was a 9-month initiative spanning multiple releases.",
+        },
+      ],
+    },
+    approachDecisions: {
+      subsections: [
+        {
+          heading: "Designing for the System, Not Just Screens",
+          blocks: [
+            {
+              type: "p",
+              text: "Rather than designing isolated features, I mapped the end-to-end lifecycle:",
+            },
+            { type: "p", text: "Encode → Go Live → Monitor → Archive → Organize → Share → Analyze" },
+            {
+              type: "p",
+              text: "This ensured every surface — dashboard, library, playlists, player — worked as a cohesive system.",
+            },
+          ],
+        },
+        {
+          heading: "Unified Stream Health Dashboard",
+          blocks: [
+            { type: "p", text: "Broadcasters needed confidence while live." },
+            {
+              type: "p",
+              text: "I designed a centralized dashboard that surfaced:",
+            },
+            {
+              type: "ul",
+              items: [
+                "Stream status",
+                "Viewer counts",
+                "Health indicators",
+                "Revenue and engagement metrics",
+              ],
+            },
+            { type: "p", text: "The goal was reducing cognitive load during live events." },
+            {
+              type: "p",
+              text: "Instead of navigating multiple tools, everything was visible in one operational surface.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/livestream-video-platform/live-player.png",
+              alt: "Live playback experience with key indicators",
+              caption: "Live state indicators and operational confidence during broadcasts.",
+            },
+          ],
+        },
+        {
+          heading: "Library & Playlist Architecture",
+          blocks: [
+            { type: "p", text: "After a stream ended, broadcasters needed to reuse content quickly." },
+            { type: "p", text: "I designed:" },
+            {
+              type: "ul",
+              items: [
+                "A scalable video library",
+                "Playlist creation and management",
+                "Drag-and-drop ordering",
+                "Cross-channel sharing workflows",
+              ],
+            },
+            {
+              type: "p",
+              text: "This turned livestream content into long-term reusable assets instead of one-time events.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/livestream-video-platform/library.png",
+              alt: "Video library page",
+              caption: "Video library with saved videos and playlists.",
+            },
+            {
+              src: "/images/case-studies/livestream-video-platform/playlist.png",
+              alt: "Playlist management page",
+              caption: "Playlists with ordering and management controls.",
+            },
+          ],
+        },
+        {
+          heading: "Custom Video Player",
+          blocks: [
+            { type: "p", text: "The viewer player was a critical surface." },
+            { type: "p", text: "I designed:" },
+            {
+              type: "ul",
+              items: [
+                "Quality selection controls",
+                "Adaptive resolution behavior",
+                "Accessible controls and subtitles",
+                "Scrubbing with chapter previews",
+                "Volume state microinteractions",
+                "Responsive layout across breakpoints",
+              ],
+            },
+            { type: "p", text: "Special consideration was given to:" },
+            {
+              type: "ul",
+              items: [
+                "Live state indicators",
+                "Viewer count during live streams",
+                "Visual hierarchy during full-screen playback",
+              ],
+            },
+            {
+              type: "p",
+              text: "The player balanced brand customization with performance constraints.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/livestream-video-platform/video-details.png",
+              alt: "Video details page with player",
+              caption: "Player within the video details page and supporting metadata.",
+            },
+            {
+              src: "/images/case-studies/livestream-video-platform/player-fullscreen.png",
+              alt: "Fullscreen player controls",
+              caption: "Fullscreen playback with clear control hierarchy.",
+            },
+          ],
+        },
+        {
+          heading: "Microinteractions for Clarity",
+          blocks: [
+            { type: "p", text: "Small details mattered:" },
+            {
+              type: "ul",
+              items: [
+                "Timeline image slices with timestamps",
+                "Volume icon states based on level",
+                "Hover states for chapter markers",
+                "Smooth transitions during quality switching",
+              ],
+            },
+            {
+              type: "p",
+              text: "These interactions reinforced trust and polish in a high-stakes environment.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/livestream-video-platform/player-cue.png",
+              alt: "Player with scrubbing cue preview",
+              caption: "Scrubbing cues and chapter markers for faster navigation.",
+            },
+            {
+              src: "/images/case-studies/livestream-video-platform/volume-microinteractions.png",
+              alt: "Volume micro-interaction states",
+              caption: "Volume states and micro-interactions based on level.",
+            },
+          ],
+        },
+        {
+          heading: "Responsive System",
+          blocks: [
+            { type: "p", text: "The player and controls were designed to scale across:" },
+            { type: "ul", items: ["Desktop", "Tablet", "Mobile"] },
+            {
+              type: "p",
+              text: "Rather than shrinking controls, I restructured interaction models to preserve usability at every breakpoint.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/livestream-video-platform/player-mobile.png",
+              alt: "Mobile player layout",
+              caption: "Responsive control model for smaller screens.",
+            },
+          ],
+        },
+      ],
+    },
+    outcomesImpact: {
+      blocks: [
+        {
+          type: "ul",
+          items: [
+            "Uptime and latency targets achieved",
+            "Reduced broadcaster friction during live events",
+            "Improved NPS across broadcasters and viewers",
+            "Increased content reuse through playlists",
+            "Stronger perception of platform reliability",
+          ],
+        },
+        {
+          type: "p",
+          text: "Most importantly, the platform moved from a set of tools to a cohesive product experience.",
+        },
+      ],
+    },
+    whatNext: {
+      blocks: [
+        {
+          type: "p",
+          text: "If I were to evolve this platform further, I would explore:",
+        },
+        {
+          type: "ul",
+          items: [
+            "AI-driven encoding optimization",
+            "Automated highlight and clip generation",
+            "Predictive stream health alerts",
+            "Smart playlist suggestions based on viewer behavior",
+          ],
+        },
+        {
+          type: "p",
+          text: "The next evolution would focus on automation and intelligence layered onto the existing system.",
+        },
+      ],
+    },
+    reflections: {
+      blocks: [
+        { type: "p", text: "This project shaped how I think about platform design." },
+        { type: "p", text: "It reinforced that:" },
+        {
+          type: "ul",
+          items: [
+            "Reliability is UX.",
+            "Systems thinking matters more than isolated features.",
+            "Microinteractions build trust.",
+            "A player is not just a component, it’s a brand surface.",
+          ],
+        },
+        {
+          type: "p",
+          text: "Designing across encoding, dashboards, content management, and playback required zooming out to see how every decision impacted the broader ecosystem.",
+        },
+      ],
+    },
   },
 ];
 
