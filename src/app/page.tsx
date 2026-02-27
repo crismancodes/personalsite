@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
 import { Button } from "@/components/ui/button";
@@ -78,16 +79,31 @@ export default function HomePage() {
                 <Link
                   key={project.slug}
                   href={`/work/${project.slug}`}
-                  className="block transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-lg"
+                  className="group block transition-shadow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-lg"
                 >
-                  <Card className="flex flex-col h-full border-border bg-card text-card-foreground shadow-sm">
+                  <Card className="flex h-full flex-col overflow-hidden border-border bg-card text-card-foreground shadow-sm transition-transform duration-200 ease-out group-hover:-translate-y-1 group-hover:shadow-md group-active:scale-[0.97]">
+                    <div className="relative aspect-video w-full border-b border-border bg-muted">
+                      {project.heroImage ? (
+                        <Image
+                          src={project.heroImage.src}
+                          alt={project.heroImage.alt}
+                          fill
+                          sizes="(min-width: 1024px) 480px, (min-width: 640px) 360px, 100vw"
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="card-image-placeholder flex h-full w-full items-center justify-center text-sm text-muted-foreground">
+                          Preview coming soon
+                        </div>
+                      )}
+                    </div>
                     <CardHeader>
                       <CardTitle>{project.title}</CardTitle>
                       <CardDescription>
                         {project.description} {project.summary}
                       </CardDescription>
                     </CardHeader>
-                    <div className="flex flex-wrap gap-1.5 px-6 pb-6 pt-0">
+                    <div className="mt-auto flex flex-wrap gap-1.5 px-6 pb-6 pt-0">
                       {project.tags.map((tag) => (
                         <Badge key={tag} variant="pill">
                           {tag}

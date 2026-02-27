@@ -29,9 +29,9 @@ export default function WorkIndexPage() {
             <Link
               key={project.slug}
               href={`/work/${project.slug}`}
-              className="block transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-lg"
+              className="group block transition-shadow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-lg"
             >
-              <Card className="flex h-full flex-col overflow-hidden border-border bg-card text-card-foreground shadow-sm">
+              <Card className="flex h-full flex-col overflow-hidden border-border bg-card text-card-foreground shadow-sm transition-transform duration-200 ease-out group-hover:-translate-y-1 group-hover:shadow-md group-active:scale-[0.97]">
                 <div className="relative aspect-video w-full border-b border-border bg-muted">
                   {project.heroImage ? (
                     <Image
@@ -42,7 +42,7 @@ export default function WorkIndexPage() {
                       className="object-cover"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center text-sm text-muted-foreground">
+                    <div className="card-image-placeholder flex h-full w-full items-center justify-center text-sm text-muted-foreground">
                       Preview coming soon
                     </div>
                   )}
