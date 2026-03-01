@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/container";
+import { HeroVideo } from "@/components/hero-video";
 import { Section } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -82,8 +83,15 @@ export default function HomePage() {
                   className="group block transition-shadow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-lg"
                 >
                   <Card className="flex h-full flex-col overflow-hidden border-border bg-card text-card-foreground shadow-sm transition-transform duration-200 ease-out group-hover:-translate-y-1 group-hover:shadow-md group-active:scale-[0.97]">
-                    <div className="relative aspect-video w-full border-b border-border bg-muted">
-                      {project.heroImage ? (
+                    <div className="relative aspect-video w-full border-b border-border bg-muted overflow-hidden">
+                      {project.heroVideo ? (
+                        <HeroVideo
+                          src={project.heroVideo.src}
+                          poster={project.heroVideo.poster}
+                          ariaLabel={project.heroVideo.ariaLabel}
+                          variant="card"
+                        />
+                      ) : project.heroImage ? (
                         <Image
                           src={project.heroImage.src}
                           alt={project.heroImage.alt}

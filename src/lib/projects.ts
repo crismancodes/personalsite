@@ -41,6 +41,8 @@ export interface Project {
   featured?: boolean;
   supportingLine?: string;
   heroImage?: CaseStudyMedia;
+  /** Optional hero video (e.g. AgentGuard). When set, used on cards and detail hero. */
+  heroVideo?: { src: string; poster?: string; ariaLabel: string };
   contextProblem: CaseStudySectionContent;
   objectivesMetrics: CaseStudySectionContent;
   myRole: CaseStudySectionContent;
@@ -60,6 +62,11 @@ export const projects: Project[] = [
     summary: "",
     tags: ["AI", "Enterprise", "Dashboards"],
     featured: true,
+    heroVideo: {
+      src: "/videos/agentguard-hero.mp4",
+      poster: "/videos/agentguard-hero-poster.jpg",
+      ariaLabel: "AgentGuard AI Visibility hero animation",
+    },
     contextProblem: "Enterprises lacked visibility into where and how AI agents were being used, creating compliance and security risks.",
     objectivesMetrics: "Reduce time-to-audit by 60%; surface high-risk agent usage within 24 hours.",
     myRole: "Lead product designer — research, information architecture, and end-to-end UX.",

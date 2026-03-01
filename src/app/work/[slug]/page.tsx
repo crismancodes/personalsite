@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/container";
+import { HeroVideo } from "@/components/hero-video";
 import { Section } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -72,7 +73,16 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               </Badge>
             ))}
           </div>
-          {project.heroImage ? (
+          {project.heroVideo ? (
+            <figure className="mt-8 overflow-hidden rounded-lg border border-border bg-muted shadow-sm">
+              <HeroVideo
+                src={project.heroVideo.src}
+                poster={project.heroVideo.poster}
+                ariaLabel={project.heroVideo.ariaLabel}
+                variant="detail"
+              />
+            </figure>
+          ) : project.heroImage ? (
             <figure className="mt-8 overflow-hidden rounded-lg border border-border bg-muted">
               <div className="relative aspect-video">
                 <Image
