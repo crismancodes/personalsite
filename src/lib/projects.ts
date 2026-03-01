@@ -654,8 +654,7 @@ export const projects: Project[] = [
     },
     reflections: {
       blocks: [
-        { type: "p", text: "This project shaped how I think about platform design." },
-        { type: "p", text: "It reinforced that:" },
+        { type: "p", text: "This project shaped how I think about platform design. It reinforced that:" },
         {
           type: "ul",
           items: [
