@@ -680,10 +680,28 @@ export const projects: Project[] = [
   },
 ];
 
+/** Slugs allowed to appear in project lists (home Selected Work, /work grid). Order = display order. */
+const VISIBLE_SLUGS = [
+  "agentguard-ai-visibility",
+  "saas-discovery-platform",
+  "posture-management-rules",
+  "charlotte-ai-agent-builder",
+  "siem-data-parser",
+  "livestream-video-platform",
+] as const;
+
+export function getVisibleProjects(): Project[] {
+  const bySlug = new Map(projects.map((p) => [p.slug, p]));
+  return VISIBLE_SLUGS.filter((slug) => bySlug.has(slug)).map((slug) => bySlug.get(slug)!);
+}
+
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
 
+/** First N visible projects for homepage "Selected work" only. /work page shows all via getVisibleProjects(). */
+const FEATURED_COUNT = 4;
+
 export function getFeaturedProjects(): Project[] {
-  return projects.filter((p) => p.featured);
+  return getVisibleProjects().slice(0, FEATURED_COUNT);
 }

@@ -10,12 +10,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { projects } from "@/lib/projects";
+import { getVisibleProjects } from "@/lib/projects";
 
 export const dynamic = "force-dynamic";
 
 export default function WorkIndexPage() {
-  const list = Array.isArray(projects) ? projects : [];
+  const list = getVisibleProjects();
   return (
     <Section className="pt-8 md:pt-10">
       <Container>
