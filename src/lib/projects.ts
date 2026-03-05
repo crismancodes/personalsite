@@ -823,6 +823,7 @@ export const projects: Project[] = [
       caption:
         "Parser editor with script surface, live test logs, and a Generate parser script with AI action.",
     },
+    thumbnailFit: "contain",
     executiveSummary: {
       overview: {
         product: "SIEM Data Parser",
@@ -920,7 +921,7 @@ export const projects: Project[] = [
           ],
           media: [
             {
-              src: "/images/case-studies/siem-data-parser/parser-editor-inline.svg",
+              src: "/images/case-studies/siem-data-parser/parser-editor-inline.png",
               alt: "Parser editor with script surface, live test logs, and Generate parser script with AI action.",
               caption:
                 "Parser editor designed for detection engineers, with script surface, live test logs, and AI-assisted generation.",
@@ -941,7 +942,7 @@ export const projects: Project[] = [
           ],
           media: [
             {
-              src: "/images/case-studies/siem-data-parser/parser-library.svg",
+              src: "/images/case-studies/siem-data-parser/parser-library.png",
               alt: "Parser library showing parser health, type, and 7-day data volume.",
               caption:
                 "Parser library showing health, type, 7-day data volume, and recency for every parser in a tenant.",
@@ -949,7 +950,7 @@ export const projects: Project[] = [
           ],
         },
         {
-          heading: "Parser Details, Blast Radius, and AI Assist",
+          heading: "Parser Details and AI Assist",
           blocks: [
             {
               type: "p",
@@ -966,7 +967,7 @@ export const projects: Project[] = [
           ],
           media: [
             {
-              src: "/images/case-studies/siem-data-parser/parser-details.svg",
+              src: "/images/case-studies/siem-data-parser/parser-details.png",
               alt: "Parser details view with parser metadata, script, test logs, and connected data sources.",
               caption:
                 "Parser details view with metadata, script, test logs, and connected data sources for blast-radius awareness.",

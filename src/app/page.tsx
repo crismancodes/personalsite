@@ -86,7 +86,7 @@ export default function HomePage() {
                     <div
                       className={
                         project.thumbnailFit === "contain"
-                          ? "relative aspect-video w-full border-b border-border overflow-hidden rounded-t-lg bg-slate-900"
+                          ? "relative aspect-video w-full border-b border-border overflow-hidden rounded-t-lg bg-muted"
                           : "relative aspect-video w-full border-b border-border bg-muted overflow-hidden"
                       }
                     >
