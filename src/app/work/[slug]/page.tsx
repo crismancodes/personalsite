@@ -7,6 +7,7 @@ import { Section } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CaseStudyContentWithProgress } from "@/components/CaseStudyContentWithProgress";
+import { CaseStudyMediaFigure } from "@/components/CaseStudyMediaFigure";
 import { Reveal } from "@/components/Reveal";
 import {
   CaseStudySectionContent,
@@ -95,28 +96,42 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               />
             </figure>
           ) : project.heroImage ? (
-            <figure className="mt-8 overflow-hidden rounded-lg border border-border bg-muted">
-              <div className="relative aspect-video">
+            project.slug === "charlotte-ai-agent-builder" ? (
+              <figure className="w-full max-w-[1100px] mx-auto mt-8 mb-8 overflow-hidden rounded-[10px] border border-border bg-muted shadow-sm">
                 <Image
                   src={project.heroImage.src}
                   alt={project.heroImage.alt}
-                  fill
-                  sizes="(min-width: 768px) 768px, 100vw"
-                  className={
-                    project.slug === "siem-data-parser" ||
-                    project.slug === "charlotte-ai-agent-builder"
-                      ? "object-contain"
-                      : "object-cover"
-                  }
+                  width={1196}
+                  height={194}
+                  sizes="(max-width: 768px) 100vw, 1100px"
+                  quality={95}
+                  className="w-full h-auto object-contain object-center"
                   priority
                 />
-              </div>
-              {project.heroImage.caption ? (
-                <figcaption className="px-4 py-3 text-sm text-muted-foreground">
-                  {project.heroImage.caption}
-                </figcaption>
-              ) : null}
-            </figure>
+              </figure>
+            ) : (
+              <figure className="mt-8 overflow-hidden rounded-lg border border-border bg-muted">
+                <div className="relative aspect-video">
+                  <Image
+                    src={project.heroImage.src}
+                    alt={project.heroImage.alt}
+                    fill
+                    sizes="(min-width: 768px) 768px, 100vw"
+                    className={
+                      project.slug === "siem-data-parser"
+                        ? "object-contain"
+                        : "object-cover"
+                    }
+                    priority
+                  />
+                </div>
+                {project.heroImage.caption ? (
+                  <figcaption className="px-4 py-3 text-sm text-muted-foreground">
+                    {project.heroImage.caption}
+                  </figcaption>
+                ) : null}
+              </figure>
+            )
           ) : null}
           {project.executiveSummary ? (
             <Reveal>
@@ -410,30 +425,3 @@ function renderBlocks(blocks: NonNullable<Exclude<CaseStudySectionContent, strin
   });
 }
 
-function CaseStudyMediaFigure({ media }: { media: { src: string; alt: string; caption?: string } }) {
-  const isLivePlayer = media.src.includes("live-player");
-  const isSiemParserImage = media.src.includes("siem-data-parser");
-  const isCharlotteUserResearch = media.src.includes("user-research");
-  return (
-    <figure className="overflow-hidden rounded-lg border border-border bg-muted">
-      <div className="relative aspect-video">
-        <Image
-          src={media.src}
-          alt={media.alt}
-          fill
-          sizes="(min-width: 768px) 352px, 100vw"
-          className={
-            isSiemParserImage
-              ? "object-contain"
-              : `object-cover ${isLivePlayer || isCharlotteUserResearch ? "object-top" : ""}`
-          }
-        />
-      </div>
-      {media.caption ? (
-        <figcaption className="px-4 py-3 text-sm text-muted-foreground">
-          {media.caption}
-        </figcaption>
-      ) : null}
-    </figure>
-  );
-}

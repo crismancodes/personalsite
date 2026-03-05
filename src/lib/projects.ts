@@ -55,6 +55,8 @@ export interface Project {
   heroImage?: CaseStudyMedia;
   /** Optional hero video (e.g. AgentGuard). When set, used on cards and detail hero. */
   heroVideo?: { src: string; poster?: string; ariaLabel: string };
+  /** Card thumbnail fit: "contain" shows full image (e.g. wide banners); default "cover" fills the card. */
+  thumbnailFit?: "cover" | "contain";
   contextProblem: CaseStudySectionContent;
   objectivesMetrics: CaseStudySectionContent;
   myRole: CaseStudySectionContent;
@@ -183,10 +185,11 @@ export const projects: Project[] = [
     tags: ["AI", "Security", "Automation", "Platform"],
     featured: true,
     heroImage: {
-      src: "/images/case-studies/charlotte-ai-agent-builder/ai-agents-list-page.png",
-      alt: "AI Agents list and platform hub",
-      caption: "Central platform view for managing and creating AI agents.",
+      src: "/images/case-studies/charlotte-ai-agent-builder/hero.png",
+      alt: "AI Agent Builder home screen (hero image)",
+      caption: "",
     },
+    thumbnailFit: "contain",
     executiveSummary: {
       overview: {
         product: "Charlotte AI Agent Builder",
@@ -355,7 +358,7 @@ export const projects: Project[] = [
           ],
           media: [
             {
-              src: "/images/case-studies/charlotte-ai-agent-builder/ai-agents-list-page.png",
+              src: "/images/case-studies/charlotte-ai-agent-builder/ai-agents-home.png",
               alt: "Central platform view for managing and creating AI agents",
               caption:
                 "Central platform view for managing and creating AI agents.",

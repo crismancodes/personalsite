@@ -83,7 +83,13 @@ export default function HomePage() {
                   className="group block transition-shadow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-lg"
                 >
                   <Card className="flex h-full flex-col overflow-hidden border-border bg-card text-card-foreground shadow-sm transition-transform duration-200 ease-out group-hover:-translate-y-1 group-hover:shadow-md group-active:scale-[0.97]">
-                    <div className="relative aspect-video w-full border-b border-border bg-muted overflow-hidden">
+                    <div
+                      className={
+                        project.thumbnailFit === "contain"
+                          ? "relative aspect-video w-full border-b border-border overflow-hidden rounded-t-lg bg-slate-900"
+                          : "relative aspect-video w-full border-b border-border bg-muted overflow-hidden"
+                      }
+                    >
                       {project.heroVideo ? (
                         <HeroVideo
                           src={project.heroVideo.src}
@@ -96,11 +102,11 @@ export default function HomePage() {
                           src={project.heroImage.src}
                           alt={project.heroImage.alt}
                           fill
-                          sizes="(min-width: 1024px) 480px, (min-width: 640px) 360px, 100vw"
+                          sizes="(max-width: 768px) 100vw, 600px"
                           className={
-                            project.slug === "charlotte-ai-agent-builder"
-                              ? "object-cover object-top"
-                              : "object-cover"
+                            project.thumbnailFit === "contain"
+                              ? "object-contain object-center"
+                              : "object-cover object-center"
                           }
                         />
                       ) : (
