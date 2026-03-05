@@ -16,6 +16,14 @@ import {
   projects,
 } from "@/lib/projects";
 
+function hasSectionMedia(section: {
+  content: CaseStudySectionContent;
+}): boolean {
+  const c = section.content;
+  if (typeof c === "string") return false;
+  return !c.subsections?.length && !!c.media?.length;
+}
+
 export const dynamic = "force-dynamic";
 
 interface CaseStudyPageProps {
@@ -143,24 +151,57 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         </Container>
       </Section>
 
-      <Section className="border-t border-border bg-muted/30">
-        <Container className="max-w-3xl">
-          <div className="flex flex-col gap-12">
-            <Reveal>
-              <CaseStudySection title="Context & Problem" content={project.contextProblem} />
-            </Reveal>
-            <Reveal>
-              <CaseStudySection title="Objectives & Metrics" content={project.objectivesMetrics} />
-            </Reveal>
-            <Reveal>
-              <CaseStudySection title="My Role" content={project.myRole} />
-            </Reveal>
-            <Reveal>
-              <CaseStudySection title="Approach & Key Decisions" content={project.approachDecisions} />
-            </Reveal>
-          </div>
-        </Container>
-      </Section>
+      {project.customSections && project.customSections.length > 0 ? (
+        <Section className="border-t border-border bg-muted/30">
+          <Container className="max-w-3xl">
+            <div className="flex flex-col gap-12">
+              {(() => {
+                const customSections = project.customSections!;
+                const sectionsWithAlternatingMedia = customSections.filter(
+                  (s) => hasSectionMedia(s) && s.mediaLayout !== "stacked"
+                );
+                return customSections.map((section) => {
+                  const mediaIndex =
+                    section.mediaLayout === "stacked"
+                      ? -1
+                      : sectionsWithAlternatingMedia.indexOf(section);
+                  const imageOnLeft =
+                    mediaIndex >= 0 ? mediaIndex % 2 === 1 : undefined;
+                  return (
+                    <Reveal key={section.title}>
+                      <CaseStudySection
+                        title={section.title}
+                        content={section.content}
+                        imageOnLeft={imageOnLeft}
+                        mediaLayout={section.mediaLayout}
+                      />
+                    </Reveal>
+                  );
+                });
+              })()}
+            </div>
+          </Container>
+        </Section>
+      ) : (
+        <Section className="border-t border-border bg-muted/30">
+          <Container className="max-w-3xl">
+            <div className="flex flex-col gap-12">
+              <Reveal>
+                <CaseStudySection title="Context & Problem" content={project.contextProblem} />
+              </Reveal>
+              <Reveal>
+                <CaseStudySection title="Objectives & Metrics" content={project.objectivesMetrics} />
+              </Reveal>
+              <Reveal>
+                <CaseStudySection title="My Role" content={project.myRole} />
+              </Reveal>
+              <Reveal>
+                <CaseStudySection title="Approach & Key Decisions" content={project.approachDecisions} />
+              </Reveal>
+            </div>
+          </Container>
+        </Section>
+      )}
 
       {project.screenshots && project.screenshots.length > 0 && (
         <Section>
@@ -189,26 +230,28 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         </Section>
       )}
 
-      <Section className="border-t border-border">
-        <Container className="max-w-3xl">
-          <div className="flex flex-col gap-12">
-            <Reveal>
-              <CaseStudySection title="Outcomes & Impact" content={project.outcomesImpact} />
-            </Reveal>
-            <Reveal>
-              <CaseStudySection title="What I'd Do Next" content={project.whatNext} />
-            </Reveal>
-            {project.reflections ? (
+      {!project.customSections?.length ? (
+        <Section className="border-t border-border">
+          <Container className="max-w-3xl">
+            <div className="flex flex-col gap-12">
               <Reveal>
-                <CaseStudySection
-                  title="Reflections & Learnings"
-                  content={project.reflections}
-                />
+                <CaseStudySection title="Outcomes & Impact" content={project.outcomesImpact} />
               </Reveal>
-            ) : null}
-          </div>
-        </Container>
-      </Section>
+              <Reveal>
+                <CaseStudySection title="What I'd Do Next" content={project.whatNext} />
+              </Reveal>
+              {project.reflections ? (
+                <Reveal>
+                  <CaseStudySection
+                    title="Reflections & Learnings"
+                    content={project.reflections}
+                  />
+                </Reveal>
+              ) : null}
+            </div>
+          </Container>
+        </Section>
+      ) : null}
 
       <Section className="border-t border-border">
         <Container>
@@ -269,11 +312,26 @@ function ExecutiveSummaryBlock({ data }: { data: ExecutiveSummary }) {
 function CaseStudySection({
   title,
   content,
+  imageOnLeft,
+  mediaLayout,
 }: {
   title: string;
   content: CaseStudySectionContent;
+  /** When true, media appears on the left (alternating layout). Only used when section has media and no subsections. */
+  imageOnLeft?: boolean;
+  /** When "stacked", text is full width with media figures stacked below. */
+  mediaLayout?: "stacked";
 }) {
   const isRich = typeof content !== "string";
+  const hasMedia =
+    isRich &&
+    !content.subsections?.length &&
+    content.media &&
+    content.media.length > 0;
+  const useStackedLayout = hasMedia && mediaLayout === "stacked";
+  const useAlternatingLayout =
+    hasMedia && !useStackedLayout && imageOnLeft !== undefined;
+
   return (
     <div className="py-10 first:pt-0 last:pb-0">
       <h2 className="font-serif text-xl font-semibold tracking-tight text-foreground">
@@ -284,17 +342,17 @@ function CaseStudySection({
       ) : content.subsections && content.subsections.length > 0 ? (
         <div className="mt-4 space-y-10">
           {content.subsections.map((s, index) => {
-            const hasMedia = s.media && s.media.length > 0;
-            const imageFirst = hasMedia && index % 2 === 0;
+            const subHasMedia = s.media && s.media.length > 0;
+            const imageFirst = subHasMedia && index % 2 === 0;
 
             return (
               <div
                 key={s.heading}
-                className={hasMedia ? "grid gap-8 md:grid-cols-2" : ""}
+                className={subHasMedia ? "grid gap-8 md:grid-cols-2" : ""}
               >
                 <div
                   className={
-                    hasMedia && imageFirst ? "md:order-2 space-y-4" : "space-y-4"
+                    subHasMedia && imageFirst ? "md:order-2 space-y-4" : "space-y-4"
                   }
                 >
                   <h3 className="mb-2 font-serif text-lg font-medium tracking-tight text-foreground">
@@ -302,12 +360,15 @@ function CaseStudySection({
                   </h3>
                   <div className="space-y-4">{renderBlocks(s.blocks)}</div>
                 </div>
-                {hasMedia ? (
+                {subHasMedia ? (
                   <div
                     className={imageFirst ? "md:order-1 space-y-4" : "space-y-4"}
                   >
-                    {s.media!.map((m) => (
-                      <CaseStudyMediaFigure key={m.src} media={m} />
+                    {s.media!.map((m, i) => (
+                      <CaseStudyMediaFigure
+                        key={(m.placeholderId ?? m.src) || `media-${i}`}
+                        media={m}
+                      />
                     ))}
                   </div>
                 ) : null}
@@ -315,19 +376,46 @@ function CaseStudySection({
             );
           })}
         </div>
+      ) : useStackedLayout ? (
+        <div className="mt-4 space-y-6">
+          <div className="space-y-4">{renderBlocks(content.blocks ?? [])}</div>
+          <div className="space-y-6">
+            {content.media!.map((m, i) => (
+              <CaseStudyMediaFigure
+                key={(m.placeholderId ?? m.src) || `media-${i}`}
+                media={m}
+              />
+            ))}
+          </div>
+        </div>
       ) : (
         <div
           className={
-            content.media && content.media.length > 0
-              ? "mt-4 grid gap-8 md:grid-cols-[1fr_22rem]"
-              : "mt-4"
+            useAlternatingLayout
+              ? "mt-4 grid gap-8 md:grid-cols-2"
+              : content.media && content.media.length > 0
+                ? "mt-4 grid gap-8 md:grid-cols-[1fr_22rem]"
+                : "mt-4"
           }
         >
-          <div className="space-y-4">{renderBlocks(content.blocks ?? [])}</div>
+          <div
+            className={
+              useAlternatingLayout && imageOnLeft ? "md:order-2 space-y-4" : "space-y-4"
+            }
+          >
+            {renderBlocks(content.blocks ?? [])}
+          </div>
           {content.media && content.media.length > 0 ? (
-            <div className="space-y-4">
-              {content.media.map((m) => (
-                <CaseStudyMediaFigure key={m.src} media={m} />
+            <div
+              className={
+                useAlternatingLayout && imageOnLeft ? "md:order-1 space-y-4" : "space-y-4"
+              }
+            >
+              {content.media.map((m, i) => (
+                <CaseStudyMediaFigure
+                  key={(m.placeholderId ?? m.src) || `media-${i}`}
+                  media={m}
+                />
               ))}
             </div>
           ) : null}

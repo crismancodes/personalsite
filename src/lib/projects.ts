@@ -2,6 +2,10 @@ export type CaseStudyMedia = {
   src: string;
   alt: string;
   caption?: string;
+  /** For placeholders: ID e.g. AG-IMG-01. When src is empty, render placeholder figure. */
+  placeholderId?: string;
+  /** Shown as "Recreate in Figma Make: {figmaInstruction}" when src is empty. */
+  figmaInstruction?: string;
 };
 
 export type CaseStudyBlock =
@@ -67,23 +71,31 @@ export interface Project {
   /** Optional section rendered directly under the hero, before Context & Problem. */
   executiveSummary?: ExecutiveSummary;
   screenshots?: { src: string; alt: string }[];
+  /** When set, these sections replace the default Context/Objectives/Role/Approach and Outcomes/WhatNext/Reflections. */
+  customSections?: {
+    title: string;
+    content: CaseStudySectionContent;
+    /** When "stacked", section text is full width with media figures stacked below instead of side-by-side. */
+    mediaLayout?: "stacked";
+  }[];
 }
 
 export const projects: Project[] = [
   {
     slug: "agentguard-ai-visibility",
-    title: "AgentGuard AI Visibility",
+    title: "AgentGuard — AI Visibility & Governance",
     description:
       "Designed controls to monitor, govern, and secure AI agents and embedded AI features across SaaS platforms, enabling organizations to block or manage AI usage at scale.",
-    summary: "",
-    tags: ["AI", "Enterprise", "Dashboards"],
+    summary:
+      "Security visibility and governance for AI agents, AI features, and external models across enterprise SaaS environments.",
+    tags: ["AI", "Cybersecurity", "SaaS Security", "Enterprise Platform"],
     featured: true,
     executiveSummary: {
       overview: {
-        product: "AgentGuard AI Visibility",
+        product: "AgentGuard — AI Visibility & Governance",
         company: "Enterprise security platform",
-        role: "Lead Product Designer",
-        timeline: "Multiple releases",
+        role: "Principal Product Designer",
+        timeline: "2 months",
         scope: "Visibility and governance for AI agents and embedded AI across SaaS",
       },
       keyContributions: [
@@ -101,12 +113,318 @@ export const projects: Project[] = [
       poster: "/videos/agentguard-hero-poster.jpg",
       ariaLabel: "AgentGuard AI Visibility hero animation",
     },
-    contextProblem: "Enterprises lacked visibility into where and how AI agents were being used, creating compliance and security risks.",
-    objectivesMetrics: "Reduce time-to-audit by 60%; surface high-risk agent usage within 24 hours.",
-    myRole: "Lead product designer — research, information architecture, and end-to-end UX.",
-    approachDecisions: "Designed a hierarchy from org → team → agent, with risk scoring and policy alignment. Prioritized clarity over density in dashboards.",
-    outcomesImpact: "Shipped to 50+ enterprise pilots; audit cycle time reduced by 55% in early adopters.",
-    whatNext: "Extend to agent-to-agent workflows and cross-tenant benchmarking.",
+    contextProblem: "",
+    objectivesMetrics: "",
+    myRole: "",
+    approachDecisions: "",
+    outcomesImpact: "",
+    whatNext: "",
+    customSections: [
+      {
+        title: "Summary",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "Security teams were rapidly adopting AI features across SaaS platforms, but lacked visibility into where AI was being used, which models were connected, and what data AI agents could access.",
+            },
+            {
+              type: "p",
+              text: "I led the design of AgentGuard, a platform capability that enables organizations to:",
+            },
+            {
+              type: "ul",
+              items: [
+                "Discover AI usage across SaaS applications",
+                "Monitor AI agents and embedded AI features",
+                "Identify external model connections",
+                "Govern high-risk AI activity across the enterprise",
+              ],
+            },
+            {
+              type: "p",
+              text: "AgentGuard introduced an AI inventory system for SaaS security platforms, helping organizations safely adopt AI while maintaining compliance and control.",
+            },
+          ],
+        },
+      },
+      {
+        title: "Context & Problem",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "AI capabilities were rapidly being introduced into SaaS products like Salesforce, Slack, Notion, and GitHub. These capabilities included embedded AI assistants, automated agents, AI-generated workflows, and external model integrations.",
+            },
+            {
+              type: "p",
+              text: "Security teams lacked visibility into:",
+            },
+            {
+              type: "ul",
+              items: [
+                "Which SaaS apps had AI enabled",
+                "What AI features were active",
+                "Which AI agents existed",
+                "What data those agents could access",
+                "Which external models were connected",
+              ],
+            },
+            {
+              type: "p",
+              text: "This created a new attack surface. Organizations needed a way to discover, monitor, and govern AI across their SaaS ecosystem.",
+            },
+          ],
+          media: [
+            {
+              src: "",
+              alt: "AI inventory navigation",
+              placeholderId: "AG-IMG-01",
+              figmaInstruction:
+                "Main AI inventory or navigation view showing entry points to Apps With AI, AI Features, AI Agents, and Models.",
+            },
+          ],
+        },
+      },
+      {
+        title: "Design Goals",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "We focused on three product goals.",
+            },
+            {
+              type: "p",
+              text: "1) AI Discovery — A centralized inventory of AI across the SaaS environment.",
+            },
+            {
+              type: "p",
+              text: "2) Risk Visibility — Quickly identify high-risk AI capabilities, including privileged agents, external model connections, and sensitive data access.",
+            },
+            {
+              type: "p",
+              text: "3) Governance — Investigation workflows and auditability so security teams can understand how agents evolve over time.",
+            },
+          ],
+        },
+      },
+      {
+        title: "Solution Overview",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "AgentGuard introduced a multi-layer AI inventory system.",
+            },
+            {
+              type: "p",
+              text: "Instead of treating AI as a single feature, we modeled AI usage across four layers:",
+            },
+            {
+              type: "ul",
+              items: [
+                "Applications with AI",
+                "AI Features",
+                "AI Agents",
+                "AI Models and Vendors",
+              ],
+            },
+            {
+              type: "p",
+              text: "This layered system lets security teams investigate AI risk from multiple perspectives.",
+            },
+          ],
+          media: [
+            {
+              src: "",
+              alt: "System overview diagram: Apps, Features, Agents, Models",
+              placeholderId: "AG-IMG-10",
+              figmaInstruction:
+                "Simple 4-layer diagram: Apps, Features, Agents, Models. Optional system overview.",
+            },
+          ],
+        },
+      },
+      {
+        title: "Apps With AI",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "The first layer of the inventory surfaces which SaaS applications have AI capabilities enabled. Security teams can see at a glance which apps in their environment use AI and drill into configuration and risk per app.",
+            },
+          ],
+          media: [
+            {
+              src: "",
+              alt: "Apps With AI inventory",
+              placeholderId: "AG-IMG-02",
+              figmaInstruction:
+                "Apps With AI inventory list or table showing SaaS apps that have AI enabled.",
+            },
+          ],
+        },
+      },
+      {
+        title: "AI Feature Discovery",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "Many SaaS applications contain multiple AI capabilities. Security teams needed visibility into AI assistants, summarization tools, automated workflows, and embedded copilots.",
+            },
+            {
+              type: "p",
+              text: "AgentGuard introduced a centralized AI feature inventory so teams can track what AI features exist, which models power them, and whether they connect to external services.",
+            },
+          ],
+          media: [
+            {
+              src: "",
+              alt: "AI Features inventory",
+              placeholderId: "AG-IMG-03",
+              figmaInstruction:
+                "AI Features inventory view listing AI features across apps with model and connection info.",
+            },
+          ],
+        },
+      },
+      {
+        title: "AI Agent Monitoring",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "AI agents represent a new security challenge. Agents can act autonomously, access sensitive data, and interact with external AI models.",
+            },
+            {
+              type: "p",
+              text: "AgentGuard introduced an AI agent inventory to monitor agents across SaaS applications. Teams can quickly identify agents with high privilege levels, external model connections, and sensitive data access.",
+            },
+          ],
+          media: [
+            {
+              src: "",
+              alt: "AI Agents inventory",
+              placeholderId: "AG-IMG-04",
+              figmaInstruction:
+                "AI Agents inventory list with privilege, model, and risk indicators.",
+            },
+          ],
+        },
+      },
+      {
+        title: "AI Model Visibility",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "One of the biggest risks introduced by AI is external model access. Many SaaS AI features send data to external model providers such as OpenAI, Anthropic, Google, and Microsoft.",
+            },
+            {
+              type: "p",
+              text: "AgentGuard introduced a model inventory system so security teams can see which external models are connected to their SaaS environment and where they are being used.",
+            },
+          ],
+          media: [
+            {
+              src: "",
+              alt: "Models / Vendors inventory",
+              placeholderId: "AG-IMG-05",
+              figmaInstruction:
+                "Models or Vendors inventory showing external model connections and usage.",
+            },
+          ],
+        },
+      },
+      {
+        title: "Deep Investigation",
+        mediaLayout: "stacked",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "Security teams need to investigate specific AI agents. AgentGuard provides a detailed investigation view showing permissions, data access, connected models, and change history.",
+            },
+          ],
+          media: [
+            {
+              src: "",
+              alt: "Agent Permissions and sensitive data access",
+              placeholderId: "AG-IMG-06",
+              figmaInstruction:
+                "Agent detail: permissions and sensitive data access section.",
+            },
+            {
+              src: "",
+              alt: "Agent Model configuration and connection summary",
+              placeholderId: "AG-IMG-07",
+              figmaInstruction:
+                "Agent detail: model configuration and connection summary.",
+            },
+            {
+              src: "",
+              alt: "Agent Change history timeline",
+              placeholderId: "AG-IMG-08",
+              figmaInstruction:
+                "Agent change history or timeline view for audit.",
+            },
+          ],
+        },
+      },
+      {
+        title: "AI App Deep Dive",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "Security teams often investigate AI usage inside a specific SaaS application. AgentGuard provides an AI configuration page per application showing which AI features exist, which agents are active, and which models are connected.",
+            },
+          ],
+          media: [
+            {
+              src: "",
+              alt: "App AI Configuration (Salesforce example)",
+              placeholderId: "AG-IMG-09",
+              figmaInstruction:
+                "Per-app AI configuration view, e.g. Salesforce, showing features, agents, and models.",
+            },
+          ],
+        },
+      },
+      {
+        title: "My Role",
+        content: {
+          blocks: [
+            {
+              type: "roleGrid",
+              role: "Principal Product Designer",
+              tools: "Figma, Cursor, Figma Make, FigJam, and Jira",
+              timeline: "2 months",
+              owned: [
+                "Defining the AI inventory system and information architecture",
+                "Designing discovery and investigation flows for security teams",
+                "Creating risk signals for privilege, data access, and external model connections",
+                "Designing governance and audit experiences for AI agent change tracking",
+                "Partnering with engineering and security research to model AI risk across SaaS platforms",
+              ],
+            },
+          ],
+        },
+      },
+      {
+        title: "Impact",
+        content: {
+          blocks: [
+            {
+              type: "p",
+              text: "AgentGuard introduced a new category of capability within SaaS security platforms. It enabled organizations to safely adopt AI by providing enterprise-wide AI visibility, monitoring of autonomous agents, external model risk detection, and security governance for AI systems.",
+            },
+          ],
+        },
+      },
+    ],
   },
   {
     slug: "saas-discovery-platform",
