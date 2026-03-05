@@ -183,7 +183,7 @@ export const projects: Project[] = [
     tags: ["AI", "Security", "Automation", "Platform"],
     featured: true,
     heroImage: {
-      src: "/images/case-studies/charlotte-ai-agent-builder/ai-agents-list-page.svg",
+      src: "/images/case-studies/charlotte-ai-agent-builder/ai-agents-list-page.png",
       alt: "AI Agents list and platform hub",
       caption: "Central platform view for managing and creating AI agents.",
     },
@@ -355,7 +355,7 @@ export const projects: Project[] = [
           ],
           media: [
             {
-              src: "/images/case-studies/charlotte-ai-agent-builder/ai-agents-list-page.svg",
+              src: "/images/case-studies/charlotte-ai-agent-builder/ai-agents-list-page.png",
               alt: "Central platform view for managing and creating AI agents",
               caption:
                 "Central platform view for managing and creating AI agents.",
@@ -376,7 +376,7 @@ export const projects: Project[] = [
           ],
           media: [
             {
-              src: "/images/case-studies/charlotte-ai-agent-builder/agent-builder-convo.svg",
+              src: "/images/case-studies/charlotte-ai-agent-builder/agent-builder-convo.png",
               alt: "Conversational builder for creating agents with natural language",
               caption:
                 "Conversational builder allowing analysts to create agents using natural language.",
@@ -401,7 +401,7 @@ export const projects: Project[] = [
           ],
           media: [
             {
-              src: "/images/case-studies/charlotte-ai-agent-builder/agent-builder-manual.svg",
+              src: "/images/case-studies/charlotte-ai-agent-builder/agent-builder-manual.png",
               alt: "Manual configuration interface for advanced users",
               caption:
                 "Manual configuration interface for advanced users.",

@@ -97,7 +97,11 @@ export default function HomePage() {
                           alt={project.heroImage.alt}
                           fill
                           sizes="(min-width: 1024px) 480px, (min-width: 640px) 360px, 100vw"
-                          className="object-cover"
+                          className={
+                            project.slug === "charlotte-ai-agent-builder"
+                              ? "object-cover object-top"
+                              : "object-cover"
+                          }
                         />
                       ) : (
                         <div className="card-image-placeholder flex h-full w-full items-center justify-center text-sm text-muted-foreground">

@@ -103,7 +103,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   fill
                   sizes="(min-width: 768px) 768px, 100vw"
                   className={
-                    project.slug === "siem-data-parser"
+                    project.slug === "siem-data-parser" ||
+                    project.slug === "charlotte-ai-agent-builder"
                       ? "object-contain"
                       : "object-cover"
                   }
@@ -412,6 +413,7 @@ function renderBlocks(blocks: NonNullable<Exclude<CaseStudySectionContent, strin
 function CaseStudyMediaFigure({ media }: { media: { src: string; alt: string; caption?: string } }) {
   const isLivePlayer = media.src.includes("live-player");
   const isSiemParserImage = media.src.includes("siem-data-parser");
+  const isCharlotteUserResearch = media.src.includes("user-research");
   return (
     <figure className="overflow-hidden rounded-lg border border-border bg-muted">
       <div className="relative aspect-video">
@@ -423,7 +425,7 @@ function CaseStudyMediaFigure({ media }: { media: { src: string; alt: string; ca
           className={
             isSiemParserImage
               ? "object-contain"
-              : `object-cover ${isLivePlayer ? "object-top" : ""}`
+              : `object-cover ${isLivePlayer || isCharlotteUserResearch ? "object-top" : ""}`
           }
         />
       </div>
