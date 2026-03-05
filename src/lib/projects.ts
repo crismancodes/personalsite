@@ -50,6 +50,8 @@ export interface Project {
   outcomesImpact: CaseStudySectionContent;
   whatNext: CaseStudySectionContent;
   reflections?: CaseStudySectionContent;
+  /** Optional section rendered directly under the hero, before Context & Problem. */
+  executiveSummary?: CaseStudySectionContent;
   screenshots?: { src: string; alt: string }[];
 }
 
@@ -108,16 +110,324 @@ export const projects: Project[] = [
     slug: "charlotte-ai-agent-builder",
     title: "Charlotte AI Agent Builder",
     description:
-      "Defined a no-code conversational system for creating and deploying security AI agents with guardrails and human-in-the-loop approvals.",
-    summary: "",
-    tags: ["AI", "No-Code", "Workflows"],
+      "Conversational AI agent creation platform for building, testing, and managing security automation agents.",
+    summary:
+      "Conversational AI agent creation platform for building, testing, and managing security automation agents.",
+    supportingLine: "CrowdStrike",
+    tags: ["AI", "Security", "Automation", "Platform"],
     featured: true,
-    contextProblem: "Product and ops teams needed to ship AI agents quickly without depending on engineering for every change.",
-    objectivesMetrics: "Ship first agent in under 30 minutes; support approval loops and human-in-the-loop.",
-    myRole: "Product design — canvas UX, node configuration, and runtime monitoring.",
-    approachDecisions: "Canvas-based flow with nodes for models, tools, and human steps. Built-in testing and version history.",
-    outcomesImpact: "Average time to first agent dropped to 28 minutes; 200+ agents in production within 6 months.",
-    whatNext: "Multi-agent orchestration and deeper integrations with enterprise data sources.",
+    heroImage: {
+      src: "/images/case-studies/charlotte-ai-agent-builder/ai-agents-list-page.svg",
+      alt: "AI Agents list and platform hub",
+      caption: "Central platform view for managing and creating AI agents.",
+    },
+    executiveSummary: {
+      blocks: [
+        {
+          type: "groups",
+          groups: [
+            {
+              title: "Overview",
+              items: [
+                "Product: Charlotte AI Agent Builder",
+                "Company: CrowdStrike",
+                "Role: Lead Product Designer",
+                "Timeline: 5 months",
+                "Scope: AI agent platform for security workflow automation",
+              ],
+            },
+            {
+              title: "Key Contributions",
+              items: [
+                "Designed the platform architecture for an AI agent ecosystem within the security console",
+                "Created a conversational builder allowing analysts to generate automation agents through natural language",
+                "Designed a dual-mode configuration system balancing AI-guided creation with advanced manual control",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    contextProblem:
+      "Security teams increasingly rely on AI tools for investigation, triage, and workflow automation. However, creating useful agents often requires engineering support, scripting knowledge, or fragmented tools.\n\nThe opportunity was to design an AI agent platform that would allow security analysts to create, configure, and deploy their own AI agents directly inside the cybersecurity platform.\n\nThe challenge was balancing flexibility with usability. Power users needed deep configuration and control, while less technical users needed a guided experience that made agent creation intuitive and approachable.",
+    objectivesMetrics: {
+      blocks: [
+        {
+          type: "p",
+          text: "Design a unified AI agent platform where users could:",
+        },
+        {
+          type: "ul",
+          items: [
+            "Discover and explore existing AI agents",
+            "Create new agents without writing code",
+            "Configure agent behavior, tools, and knowledge sources",
+            "Manage and monitor agents across their environment",
+          ],
+        },
+        {
+          type: "p",
+          text: "Success meant enabling non-engineers to create automation while still supporting advanced customization for experienced users.",
+        },
+      ],
+    },
+    myRole: {
+      blocks: [
+        {
+          type: "roleGrid",
+          role: "Product Design",
+          tools: "Figma, Miro, User interviews",
+          timeline: "5 months",
+          owned: [
+            "UX architecture for the AI agent platform",
+            "Conversational agent builder design",
+            "Advanced configuration interface design",
+            "User research and validation",
+            "Cross-team collaboration with product, engineering, and AI teams",
+          ],
+        },
+      ],
+    },
+    approachDecisions: {
+      subsections: [
+        {
+          heading: "Competitive Research",
+          blocks: [
+            {
+              type: "p",
+              text: "The project began with researching emerging AI agent platforms to understand how other tools approached agent creation, orchestration, and configuration.",
+            },
+            {
+              type: "p",
+              text: "I created a competitive landscape board in Miro and evaluated platforms such as Microsoft's Copilot agent builder and other AI automation tools.",
+            },
+            {
+              type: "p",
+              text: "This analysis revealed common patterns around agent configuration, knowledge management, and workflow orchestration that informed the platform direction.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/charlotte-ai-agent-builder/competitive-intel.svg",
+              alt: "Competitive landscape and research on emerging AI agent platforms",
+              caption:
+                "Competitive landscape and research gathered on emerging AI agent platforms.",
+            },
+          ],
+        },
+        {
+          heading: "Information Architecture & User Flows",
+          blocks: [
+            {
+              type: "p",
+              text: "Before designing the interface, I mapped the core information architecture and user workflows required for an AI agent platform.",
+            },
+            {
+              type: "p",
+              text: "This included flows for:",
+            },
+            {
+              type: "ul",
+              items: [
+                "Creating new agents",
+                "Discovering existing agents",
+                "Managing and monitoring agents",
+                "Connecting agents to tools and knowledge sources",
+              ],
+            },
+            {
+              type: "p",
+              text: "Mapping these flows helped align the team on the underlying system structure before moving into interface design.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/charlotte-ai-agent-builder/miro-workflows.svg",
+              alt: "Early workflow diagrams for agent creation and management",
+              caption:
+                "Early workflow diagrams mapping how users create, manage, and deploy agents.",
+            },
+          ],
+        },
+        {
+          heading: "Cross-Organizational Collaboration & Alignment",
+          blocks: [
+            {
+              type: "p",
+              text: "Designing an AI platform required alignment across product, engineering, and AI research teams.",
+            },
+            {
+              type: "p",
+              text: "To facilitate this, I ran a design sprint workshop with stakeholders across the organization.",
+            },
+            {
+              type: "p",
+              text: "During the workshop we mapped the end-to-end user journey, identified opportunities, and generated early concepts that later informed the high-fidelity designs.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/charlotte-ai-agent-builder/collab-miro-board.svg",
+              alt: "Workshop artifacts for AI agent platform alignment",
+              caption:
+                "Workshop artifacts used to align stakeholders on the AI agent platform direction.",
+            },
+          ],
+        },
+        {
+          heading: "AI Agent Platform",
+          blocks: [
+            {
+              type: "p",
+              text: "The first step in enabling an agent ecosystem was designing a central hub where users could explore, create, and manage their agents.",
+            },
+            {
+              type: "p",
+              text: "The AI Agents landing page provides a unified control center where users can:",
+            },
+            {
+              type: "ul",
+              items: [
+                "Browse template agents",
+                "Create custom agents",
+                "Manage and monitor agents",
+                "Search and filter agents",
+              ],
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/charlotte-ai-agent-builder/ai-agents-list-page.svg",
+              alt: "Central platform view for managing and creating AI agents",
+              caption:
+                "Central platform view for managing and creating AI agents.",
+            },
+          ],
+        },
+        {
+          heading: "Conversational Agent Builder",
+          blocks: [
+            {
+              type: "p",
+              text: "To make agent creation accessible to a wide range of users, I designed a conversational builder powered by an AI assistant.",
+            },
+            {
+              type: "p",
+              text: "Users can describe the agent they want to create in natural language, and the system generates the configuration, goals, and structure of the agent.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/charlotte-ai-agent-builder/agent-builder-convo.svg",
+              alt: "Conversational builder for creating agents with natural language",
+              caption:
+                "Conversational builder allowing analysts to create agents using natural language.",
+            },
+          ],
+        },
+        {
+          heading: "Advanced Configuration Interface",
+          blocks: [
+            {
+              type: "p",
+              text: "While the conversational builder simplified creation, advanced users still needed direct control over agent behavior.",
+            },
+            {
+              type: "p",
+              text: "I designed an advanced configuration interface exposing the agent's components and settings in a structured view.",
+            },
+            {
+              type: "p",
+              text: "Users can define goals, select models, connect tools, and configure knowledge sources.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/charlotte-ai-agent-builder/agent-builder-manual.svg",
+              alt: "Manual configuration interface for advanced users",
+              caption:
+                "Manual configuration interface for advanced users.",
+            },
+          ],
+        },
+        {
+          heading: "Design Challenges & Tradeoffs",
+          blocks: [
+            {
+              type: "p",
+              text: "One of the core design challenges was balancing simplicity with flexibility.",
+            },
+            {
+              type: "p",
+              text: "A fully configurable system could overwhelm analysts new to AI automation, while overly simplifying the system would limit advanced use cases.",
+            },
+            {
+              type: "p",
+              text: "The solution was a dual-mode design:",
+            },
+            {
+              type: "ul",
+              items: [
+                "A conversational builder for fast creation",
+                "A structured configuration interface for full control",
+              ],
+            },
+            {
+              type: "p",
+              text: "This allowed both new and experienced users to work efficiently.",
+            },
+          ],
+        },
+        {
+          heading: "User Research",
+          blocks: [
+            {
+              type: "p",
+              text: "To validate the concept, I conducted interviews with eight security professionals and walked them through the proposed workflows.",
+            },
+            {
+              type: "p",
+              text: "Participants completed tasks such as creating and configuring agents using the prototypes.",
+            },
+            {
+              type: "p",
+              text: "The conversational builder proved particularly compelling, with most users understanding the concept quickly.",
+            },
+          ],
+          media: [
+            {
+              src: "/images/case-studies/charlotte-ai-agent-builder/user-research.svg",
+              alt: "User interviews validating the agent creation workflow",
+              caption:
+                "User interviews validating the agent creation workflow.",
+            },
+          ],
+        },
+      ],
+    },
+    outcomesImpact: {
+      blocks: [
+        {
+          type: "p",
+          text: "The goal of this project was to translate a strategic AI initiative into a usable product platform.",
+        },
+        {
+          type: "p",
+          text: "Through research, collaboration, and system design, the project delivered a flexible AI agent platform that enables security teams to automate workflows and explore AI-driven capabilities safely.",
+        },
+        { type: "p", text: "Outcomes" },
+        {
+          type: "ul",
+          items: [
+            "Enabled security analysts to create AI automation without writing code",
+            "Established the foundation for AI agents across the platform",
+            "Designed a scalable system supporting future AI capabilities",
+          ],
+        },
+      ],
+    },
+    whatNext:
+      "Multi-agent orchestration and deeper integrations with enterprise data sources.",
   },
   {
     slug: "siem-data-parser",

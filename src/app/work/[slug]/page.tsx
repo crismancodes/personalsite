@@ -63,6 +63,15 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   className="h-10 w-10 rounded-sm object-contain"
                 />
               )}
+              {project.slug === "charlotte-ai-agent-builder" && (
+                <Image
+                  src="/logos/crowdstrike.png"
+                  alt="CrowdStrike logo"
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 rounded-sm object-contain"
+                />
+              )}
               <p>{project.supportingLine}</p>
             </div>
           ) : null}
@@ -104,6 +113,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 </figcaption>
               ) : null}
             </figure>
+          ) : null}
+          {project.executiveSummary ? (
+            <div className="mt-8">
+              <CaseStudySection title="Executive Summary" content={project.executiveSummary} />
+            </div>
           ) : null}
         </Container>
       </Section>
