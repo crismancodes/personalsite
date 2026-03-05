@@ -24,6 +24,18 @@ export type CaseStudySubsection = {
   media?: CaseStudyMedia[];
 };
 
+export type ExecutiveSummary = {
+  overview: {
+    product: string;
+    company: string;
+    role: string;
+    timeline: string;
+    scope: string;
+  };
+  keyContributions: string[];
+  outcomes?: string[];
+};
+
 export type CaseStudySectionContent =
   | string
   | {
@@ -51,7 +63,7 @@ export interface Project {
   whatNext: CaseStudySectionContent;
   reflections?: CaseStudySectionContent;
   /** Optional section rendered directly under the hero, before Context & Problem. */
-  executiveSummary?: CaseStudySectionContent;
+  executiveSummary?: ExecutiveSummary;
   screenshots?: { src: string; alt: string }[];
 }
 
@@ -64,6 +76,24 @@ export const projects: Project[] = [
     summary: "",
     tags: ["AI", "Enterprise", "Dashboards"],
     featured: true,
+    executiveSummary: {
+      overview: {
+        product: "AgentGuard AI Visibility",
+        company: "Enterprise security platform",
+        role: "Lead Product Designer",
+        timeline: "Multiple releases",
+        scope: "Visibility and governance for AI agents and embedded AI across SaaS",
+      },
+      keyContributions: [
+        "Designed hierarchy from org to team to agent with risk scoring and policy alignment",
+        "Led research, information architecture, and end-to-end UX for AI governance",
+        "Prioritized clarity over density in dashboards for audit and compliance",
+      ],
+      outcomes: [
+        "Shipped to 50+ enterprise pilots",
+        "Audit cycle time reduced by 55% in early adopters",
+      ],
+    },
     heroVideo: {
       src: "/videos/agentguard-hero.mp4",
       poster: "/videos/agentguard-hero-poster.jpg",
@@ -84,6 +114,24 @@ export const projects: Project[] = [
     summary: "",
     tags: ["SaaS", "B2B", "Discovery"],
     featured: true,
+    executiveSummary: {
+      overview: {
+        product: "SaaS Discovery & Governance",
+        company: "B2B SaaS",
+        role: "Product Design Lead",
+        timeline: "Multi-quarter initiative",
+        scope: "Distributed browser extension for shadow IT discovery and app governance",
+      },
+      keyContributions: [
+        "Led user research, journey mapping, and UI for search, comparison, and approval flows",
+        "Designed comparison tables and criteria weighting for software evaluation",
+        "Integrated with SSO and procurement for a single evaluation workflow",
+      ],
+      outcomes: [
+        "Evaluation time down 38%",
+        "NPS for procurement users increased by 22 points",
+      ],
+    },
     contextProblem: "Teams spent weeks in spreadsheets and ad-hoc tools to evaluate software; no single source of truth.",
     objectivesMetrics: "Cut evaluation time by 40%; increase stakeholder alignment scores.",
     myRole: "Product design lead — user research, journey mapping, and UI for search, comparison, and approval flows.",
@@ -99,6 +147,24 @@ export const projects: Project[] = [
     summary: "",
     tags: ["Security", "Compliance", "Rule Builder"],
     featured: true,
+    executiveSummary: {
+      overview: {
+        product: "Posture Management Rules",
+        company: "Security platform",
+        role: "Lead Designer",
+        timeline: "Multiple releases",
+        scope: "Visual interface for security and compliance rule configuration across SaaS",
+      },
+      keyContributions: [
+        "Architected block-based expression model with natural-language hints",
+        "Designed rule model, expression UI, and testing and preview flows",
+        "Emphasized preview and dry-run before deployment for safe changes",
+      ],
+      outcomes: [
+        "70% of new rules created by non-engineers",
+        "Time-to-rule under 2 hours for typical cases",
+      ],
+    },
     contextProblem: "Security teams could not express complex posture rules without engineering; changes took weeks.",
     objectivesMetrics: "Enable non-engineers to create and edit rules; reduce time-to-rule from weeks to hours.",
     myRole: "Lead designer — rule model, expression UI, and testing/preview flows.",
@@ -122,30 +188,22 @@ export const projects: Project[] = [
       caption: "Central platform view for managing and creating AI agents.",
     },
     executiveSummary: {
-      blocks: [
-        {
-          type: "groups",
-          groups: [
-            {
-              title: "Overview",
-              items: [
-                "Product: Charlotte AI Agent Builder",
-                "Company: CrowdStrike",
-                "Role: Lead Product Designer",
-                "Timeline: 5 months",
-                "Scope: AI agent platform for security workflow automation",
-              ],
-            },
-            {
-              title: "Key Contributions",
-              items: [
-                "Designed the platform architecture for an AI agent ecosystem within the security console",
-                "Created a conversational builder allowing analysts to generate automation agents through natural language",
-                "Designed a dual-mode configuration system balancing AI-guided creation with advanced manual control",
-              ],
-            },
-          ],
-        },
+      overview: {
+        product: "Charlotte AI Agent Builder",
+        company: "CrowdStrike",
+        role: "Lead Product Designer",
+        timeline: "5 months",
+        scope: "AI agent platform for security workflow automation",
+      },
+      keyContributions: [
+        "Designed the platform architecture for an AI agent ecosystem within the security console",
+        "Created a conversational builder enabling natural language agent creation",
+        "Designed a dual-mode configuration system balancing guided setup with manual control",
+      ],
+      outcomes: [
+        "Enabled non-engineers to create AI automation without writing code",
+        "Established a foundation for agent-based workflows across the platform",
+        "Created a scalable pattern for future AI features",
       ],
     },
     contextProblem:
@@ -444,6 +502,25 @@ export const projects: Project[] = [
       caption:
         "Parser editor with script surface, live test logs, and a Generate parser script with AI action.",
     },
+    executiveSummary: {
+      overview: {
+        product: "SIEM Data Parser",
+        company: "CrowdStrike",
+        role: "Lead Product Designer",
+        timeline: "5 months",
+        scope: "Tooling to parse, normalize, and route log and event data into SIEM and data lakes",
+      },
+      keyContributions: [
+        "Designed the end-to-end parser creation and editing workflow for faster log onboarding",
+        "Simplified complex parsing concepts into a usable, auditable interface for security teams",
+        "Partnered with engineering to support scalable onboarding across many log types",
+      ],
+      outcomes: [
+        "Reduced friction for onboarding new log sources",
+        "Enabled repeatable, standardized parser authoring and maintenance",
+        "Improved clarity and confidence for security teams managing log pipelines",
+      ],
+    },
     contextProblem:
       "Cybersecurity Co.’s customers stream large volumes of third-party security logs into the platform, but each source formats fields differently. Raw events were hard for humans to read, inconsistent for detection content, and expensive to normalize in backend code. Parser logic lived in engineer-owned scripts, so onboarding a new integration or fixing a broken parser meant opening tickets, waiting on deploys, and guessing at production behavior with little visibility into parser health.",
     objectivesMetrics: {
@@ -616,6 +693,24 @@ export const projects: Project[] = [
     summary: "Platform for building and distributing security apps that integrate with Falcon data and actions.",
     tags: ["Security", "Platform", "Ecosystem"],
     featured: false,
+    executiveSummary: {
+      overview: {
+        product: "CrowdStrike App Platform",
+        company: "CrowdStrike",
+        role: "Product Designer",
+        timeline: "Multi-quarter initiative",
+        scope: "Extension and app ecosystem for building and distributing security apps on Falcon",
+      },
+      keyContributions: [
+        "Designed developer experience for app build, test, publish, and update lifecycle",
+        "Designed app marketplace UX with categories and trust signals",
+        "Shaped SDK and platform patterns for third-party app integration",
+      ],
+      outcomes: [
+        "Marketplace launched with 15 apps",
+        "30+ apps within 18 months",
+      ],
+    },
     contextProblem: "Partners and enterprises wanted to extend Falcon with custom workflows; no standard way to build or ship apps.",
     objectivesMetrics: "Launch app marketplace; support 20+ apps in first year.",
     myRole: "Product design — developer experience, app lifecycle, and marketplace UX.",
@@ -630,6 +725,24 @@ export const projects: Project[] = [
     summary: "Component library, patterns, and documentation for consistent UI across Resi's product suite.",
     tags: ["Design Systems", "Documentation", "Components"],
     featured: false,
+    executiveSummary: {
+      overview: {
+        product: "Resi Design System",
+        company: "Resi Media",
+        role: "Design System Lead",
+        timeline: "Multi-quarter initiative",
+        scope: "Component library, tokens, and documentation for consistent UI across products",
+      },
+      keyContributions: [
+        "Led token-first system (color, type, spacing) and React component library",
+        "Built documentation site with usage and accessibility guidance",
+        "Drove adoption and design-dev handoff standards",
+      ],
+      outcomes: [
+        "Adoption across 4 products",
+        "Design-dev handoff time cut by half",
+      ],
+    },
     contextProblem: "Multiple products and teams led to inconsistent UI and duplicated effort; no single source of truth.",
     objectivesMetrics: "Single component library; 90%+ adoption across products; documented patterns.",
     myRole: "Design system lead — tokens, components, and documentation site.",
@@ -649,6 +762,25 @@ export const projects: Project[] = [
       src: "/images/case-studies/livestream-video-platform/player-fullscreen.png",
       alt: "Video player in fullscreen mode",
       caption: "Custom player designed for live and VOD playback.",
+    },
+    executiveSummary: {
+      overview: {
+        product: "Livestream Video Platform",
+        company: "Resi Media",
+        role: "Lead Product Designer",
+        timeline: "9 months",
+        scope: "Encoding, delivery, analytics, and viewer experience for broadcast-grade livestream and VOD",
+      },
+      keyContributions: [
+        "Designed operator workflows across encoding, monitoring, and stream management",
+        "Unified analytics and experience touchpoints across platform surfaces",
+        "Improved viewer experience through player and playback UX enhancements",
+      ],
+      outcomes: [
+        "Increased reliability and operational clarity for broadcasters",
+        "Improved visibility into stream health and performance",
+        "Established a scalable foundation for additional platform capabilities",
+      ],
     },
     contextProblem: {
       blocks: [

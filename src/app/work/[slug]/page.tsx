@@ -6,8 +6,11 @@ import { HeroVideo } from "@/components/hero-video";
 import { Section } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { CaseStudyContentWithProgress } from "@/components/CaseStudyContentWithProgress";
+import { Reveal } from "@/components/Reveal";
 import {
   CaseStudySectionContent,
+  ExecutiveSummary,
   getProjectBySlug,
   projects,
 } from "@/lib/projects";
@@ -29,7 +32,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   if (!project) notFound();
 
   return (
-    <>
+    <CaseStudyContentWithProgress>
       <Section className="pt-8 md:pt-10">
         <Container className="max-w-3xl">
           <div className="mb-6">
@@ -115,57 +118,79 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             </figure>
           ) : null}
           {project.executiveSummary ? (
-            <div className="mt-8">
-              <CaseStudySection title="Executive Summary" content={project.executiveSummary} />
-            </div>
+            <Reveal>
+              <div className="mt-8">
+                <ExecutiveSummaryBlock data={project.executiveSummary} />
+              </div>
+            </Reveal>
           ) : null}
         </Container>
       </Section>
 
       <Section className="border-t border-border bg-muted/30">
         <Container className="max-w-3xl">
-          <CaseStudySection title="Context & Problem" content={project.contextProblem} />
-          <CaseStudySection title="Objectives & Metrics" content={project.objectivesMetrics} />
-          <CaseStudySection title="My Role" content={project.myRole} />
-          <CaseStudySection title="Approach & Key Decisions" content={project.approachDecisions} />
+          <div className="flex flex-col gap-12">
+            <Reveal>
+              <CaseStudySection title="Context & Problem" content={project.contextProblem} />
+            </Reveal>
+            <Reveal>
+              <CaseStudySection title="Objectives & Metrics" content={project.objectivesMetrics} />
+            </Reveal>
+            <Reveal>
+              <CaseStudySection title="My Role" content={project.myRole} />
+            </Reveal>
+            <Reveal>
+              <CaseStudySection title="Approach & Key Decisions" content={project.approachDecisions} />
+            </Reveal>
+          </div>
         </Container>
       </Section>
 
       {project.screenshots && project.screenshots.length > 0 && (
         <Section>
-          <Container className="max-w-4xl">
-            <h2 className="font-serif text-2xl font-semibold tracking-tight">
-              Screenshots
-            </h2>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              {project.screenshots.map((img) => (
-                <figure key={img.src} className="overflow-hidden rounded-lg border border-border">
-                  <div className="relative aspect-video bg-muted">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      sizes="(min-width: 768px) 512px, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                </figure>
-              ))}
-            </div>
-          </Container>
+          <Reveal>
+            <Container className="max-w-4xl">
+              <h2 className="font-serif text-2xl font-semibold tracking-tight">
+                Screenshots
+              </h2>
+              <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                {project.screenshots.map((img) => (
+                  <figure key={img.src} className="overflow-hidden rounded-lg border border-border">
+                    <div className="relative aspect-video bg-muted">
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes="(min-width: 768px) 512px, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </figure>
+                ))}
+              </div>
+            </Container>
+          </Reveal>
         </Section>
       )}
 
       <Section className="border-t border-border">
         <Container className="max-w-3xl">
-          <CaseStudySection title="Outcomes & Impact" content={project.outcomesImpact} />
-          <CaseStudySection title="What I'd Do Next" content={project.whatNext} />
-          {project.reflections ? (
-            <CaseStudySection
-              title="Reflections & Learnings"
-              content={project.reflections}
-            />
-          ) : null}
+          <div className="flex flex-col gap-12">
+            <Reveal>
+              <CaseStudySection title="Outcomes & Impact" content={project.outcomesImpact} />
+            </Reveal>
+            <Reveal>
+              <CaseStudySection title="What I'd Do Next" content={project.whatNext} />
+            </Reveal>
+            {project.reflections ? (
+              <Reveal>
+                <CaseStudySection
+                  title="Reflections & Learnings"
+                  content={project.reflections}
+                />
+              </Reveal>
+            ) : null}
+          </div>
         </Container>
       </Section>
 
@@ -176,7 +201,52 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </Button>
         </Container>
       </Section>
-    </>
+    </CaseStudyContentWithProgress>
+  );
+}
+
+function ExecutiveSummaryBlock({ data }: { data: ExecutiveSummary }) {
+  const overviewItems = [
+    `Product: ${data.overview.product}`,
+    `Company: ${data.overview.company}`,
+    `Role: ${data.overview.role}`,
+    `Timeline: ${data.overview.timeline}`,
+    `Scope: ${data.overview.scope}`,
+  ];
+  return (
+    <div className="py-10 first:pt-0 last:pb-0">
+      <h2 className="font-serif text-xl font-semibold tracking-tight text-foreground">
+        Executive Summary
+      </h2>
+      <div className="mt-4 grid gap-6 sm:grid-cols-2">
+        <div className="rounded-lg border border-border bg-background/60 p-4">
+          <p className="font-medium text-foreground leading-relaxed">Overview</p>
+          <ul className="mt-2 list-disc space-y-1.5 pl-6 text-muted-foreground leading-relaxed">
+            {overviewItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-lg border border-border bg-background/60 p-4">
+          <p className="font-medium text-foreground leading-relaxed">Key Contributions</p>
+          <ul className="mt-2 list-disc space-y-1.5 pl-6 text-muted-foreground leading-relaxed">
+            {data.keyContributions.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      {data.outcomes && data.outcomes.length > 0 ? (
+        <div className="mt-6 rounded-lg border border-border bg-background/60 p-4">
+          <p className="font-medium text-foreground leading-relaxed">Outcomes</p>
+          <ul className="mt-2 list-disc space-y-1.5 pl-6 text-muted-foreground leading-relaxed">
+            {data.outcomes.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </div>
   );
 }
 
@@ -189,7 +259,7 @@ function CaseStudySection({
 }) {
   const isRich = typeof content !== "string";
   return (
-    <div className="py-8 first:pt-0 last:pb-0">
+    <div className="py-10 first:pt-0 last:pb-0">
       <h2 className="font-serif text-xl font-semibold tracking-tight text-foreground">
         {title}
       </h2>
