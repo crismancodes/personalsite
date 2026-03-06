@@ -815,7 +815,7 @@ export const projects: Project[] = [
     tags: ["Security", "Data", "SIEM"],
     featured: false,
     heroImage: {
-      src: "/images/case-studies/siem-data-parser/parser-editor.svg",
+      src: "/images/case-studies/siem-data-parser/parser-editor-hero.svg",
       alt: "Parser editor with script surface and live test logs.",
       caption:
         "Parser editor with script surface and live test logs.",

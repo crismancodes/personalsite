@@ -308,7 +308,8 @@ export default async function SIEMDataParserCaseStudyPage() {
                   src={project.heroImage.src}
                   alt={project.heroImage.alt}
                   fill
-                  sizes="(min-width: 768px) 768px, 100vw"
+                  sizes="(min-width: 768px) 1536px, 100vw"
+                  quality={95}
                   className="object-contain"
                   priority
                 />
