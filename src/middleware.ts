@@ -26,5 +26,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/work", "/work/:path*"],
+  // Temporarily disable /work password protection.
+  // Re-enable by restoring matcher to: ["/work", "/work/:path*"]
+  matcher: ["/__disabled_work_protection"],
 };
