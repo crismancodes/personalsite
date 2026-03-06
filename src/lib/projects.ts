@@ -806,14 +806,14 @@ export const projects: Project[] = [
     description: "Structured parsing and normalization for SIEM ingestion.",
     summary:
       "Scriptable tools to parse, normalize, and route security log and event data into SIEM and data lakes.",
-    supportingLine: "CrowdStrike (pseudonym: Cybersecurity Co.)",
+    supportingLine: "CrowdStrike",
     tags: ["Security", "Data", "SIEM"],
     featured: false,
     heroImage: {
       src: "/images/case-studies/siem-data-parser/parser-editor.svg",
-      alt: "Parser editor with script surface, live test logs, and Generate parser script with AI action.",
+      alt: "Parser editor with script surface and live test logs.",
       caption:
-        "Parser editor with script surface, live test logs, and a Generate parser script with AI action.",
+        "Parser editor with script surface and live test logs.",
     },
     thumbnailFit: "contain",
     executiveSummary: {
@@ -914,7 +914,7 @@ export const projects: Project[] = [
           media: [
             {
               src: "/images/case-studies/siem-data-parser/parser-editor-inline.png",
-              alt: "Parser editor with script surface, live test logs, and Generate parser script with AI action.",
+              alt: "Parser editor with script surface and live test logs.",
               caption:
                 "Parser editor designed for detection engineers, with script surface, live test logs, and AI-assisted generation.",
             },
@@ -950,10 +950,6 @@ export const projects: Project[] = [
             },
             {
               type: "p",
-              text: "As a fast follow, we added a ‘Generate parser script with AI’ action directly into the editor. Users paste or select example logs, click the AI button, and get a starter parser script that targets the platform’s schema conventions.",
-            },
-            {
-              type: "p",
               text: "They can then review, tweak, and re-run tests against real sample data, keeping the script as the source of truth while dramatically reducing the time and effort to author new parsers.",
             },
           ],
@@ -975,7 +971,6 @@ export const projects: Project[] = [
           items: [
             "Shifted parser ownership from backend engineers to detection engineers and analysts, with most day-to-day edits happening directly in the UI.",
             "Cut the typical time to bring a new log source online from multiple days of back-and-forth to a same-day workflow using live tests on production-like logs.",
-            "Lowered the barrier for new parsers with the AI ‘Generate parser script’ button, providing high-quality starter scripts in seconds.",
             "Reduced manual script authoring effort while improving confidence in changes through side-by-side testing.",
             "Gave teams a single place to monitor parser status, spot non-functional or stale parsers, and prioritize fixes based on data volume and impact.",
           ],
@@ -991,6 +986,7 @@ export const projects: Project[] = [
         {
           type: "ul",
           items: [
+            "As a fast follow, add a ‘Generate parser script’ feature where users describe the script they want in natural language and generate it with the press of a button.",
             "Extend AI assistance beyond generation to include inline explanations of script snippets and suggested field mappings when new fields appear in logs.",
             "Automatically detect parsing anomalies or drops so teams are alerted when parsers silently fail or degrade.",
             "Add richer analytics around parser performance over time – error rates, dropped events, and latency – to guide optimization work.",
@@ -1069,7 +1065,7 @@ export const projects: Project[] = [
     title: "Livestream Video Platform",
     description: "End-to-end platform for professional livestreaming and VOD.",
     summary: "Encoding, delivery, and viewer experience for broadcast-grade livestream and video-on-demand.",
-    supportingLine: "Resi Media (pseudonym: Video Stream Co.)",
+    supportingLine: "Resi Media",
     tags: ["Video", "Livestream", "Platform"],
     featured: false,
     heroImage: {
@@ -1438,9 +1434,6 @@ export const projects: Project[] = [
 
 /** Slugs allowed to appear in project lists (home Selected Work, /work grid). Order = display order. */
 const VISIBLE_SLUGS = [
-  "agentguard-ai-visibility",
-  "saas-discovery-platform",
-  "posture-management-rules",
   "charlotte-ai-agent-builder",
   "siem-data-parser",
   "livestream-video-platform",
@@ -1457,7 +1450,11 @@ export function getProjectBySlug(slug: string): Project | undefined {
 
 /** First N visible projects for homepage "Selected work" only. /work page shows all via getVisibleProjects(). */
 const FEATURED_COUNT = 4;
+/** Slugs to hide from homepage Selected work (still shown on /work). */
+const HIDDEN_FROM_FEATURED = ["livestream-video-platform"] as const;
 
 export function getFeaturedProjects(): Project[] {
-  return getVisibleProjects().slice(0, FEATURED_COUNT);
+  return getVisibleProjects()
+    .filter((p) => !HIDDEN_FROM_FEATURED.includes(p.slug as (typeof HIDDEN_FROM_FEATURED)[number]))
+    .slice(0, FEATURED_COUNT);
 }
