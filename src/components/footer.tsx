@@ -1,7 +1,7 @@
 import { Container } from "@/components/container";
 
 const FOOTER_LINKS = [
-  { label: "LinkedIn", href: "https://linkedin.com/in/seancrisman", external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/sean-crisman/", external: true },
   { label: "Email", href: "mailto:contact.seancrisman@gmail.com", external: true },
   { label: "GitHub", href: "https://github.com/crismancodes", external: true },
 ];
