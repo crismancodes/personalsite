@@ -115,7 +115,7 @@ export default function AboutPage() {
             Design does not end in Figma.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            I lead through output, clarity, and ownership. Titles are secondary.
+            I lead through output, clarity, and ownership.
           </p>
         </Container>
       </Section>
