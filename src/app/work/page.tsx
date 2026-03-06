@@ -1,0 +1,89 @@
+import Link from "next/link";
+import Image from "next/image";
+import { Container } from "@/components/container";
+import { HeroVideo } from "@/components/hero-video";
+import { Section } from "@/components/section";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { getVisibleProjects } from "@/lib/projects";
+
+export const dynamic = "force-dynamic";
+
+export default function WorkIndexPage() {
+  const list = getVisibleProjects();
+  return (
+    <Section className="pt-8 md:pt-10">
+      <Container>
+        <h1 className="font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          Work
+        </h1>
+        <p className="mt-2 text-muted-foreground">
+          Case studies and selected projects.
+        </p>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+          {list.map((project) => (
+            <Link
+              key={project.slug}
+              href={`/work/${project.slug}`}
+              className="group block transition-shadow focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-lg"
+            >
+              <Card className="flex h-full flex-col overflow-hidden border-border bg-card text-card-foreground shadow-sm transition-transform duration-200 ease-out group-hover:-translate-y-1 group-hover:shadow-md group-active:scale-[0.97]">
+                <div
+                  className={
+                    project.thumbnailFit === "contain"
+                      ? "relative aspect-video w-full border-b border-border overflow-hidden rounded-t-lg bg-muted"
+                      : "relative aspect-video w-full border-b border-border bg-muted overflow-hidden"
+                  }
+                >
+                  {project.heroVideo ? (
+                    <HeroVideo
+                      src={project.heroVideo.src}
+                      poster={project.heroVideo.poster}
+                      ariaLabel={project.heroVideo.ariaLabel}
+                      variant="card"
+                      objectFit={project.thumbnailFit === "contain" ? "contain" : "cover"}
+                    />
+                  ) : project.heroImage ? (
+                    <Image
+                      src={project.heroImage.src}
+                      alt={project.heroImage.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 600px"
+                      className={
+                        project.thumbnailFit === "contain"
+                          ? "object-contain object-center"
+                          : "object-cover object-center"
+                      }
+                    />
+                  ) : (
+                    <div className="card-image-placeholder flex h-full w-full items-center justify-center text-sm text-muted-foreground">
+                      Preview coming soon
+                    </div>
+                  )}
+                </div>
+                <CardHeader>
+                  <CardTitle>{project.title}</CardTitle>
+                  <CardDescription>
+                    {project.description} {project.summary}
+                  </CardDescription>
+                </CardHeader>
+                <div className="mt-auto flex flex-wrap gap-1.5 px-6 pb-6 pt-0">
+                  {project.tags.map((tag) => (
+                    <Badge key={tag} variant="pill">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  );
+}
