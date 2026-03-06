@@ -773,14 +773,6 @@ export const projects: Project[] = [
               text: "The conversational builder proved particularly compelling, with most users understanding the concept quickly.",
             },
           ],
-          media: [
-            {
-              src: "/images/case-studies/charlotte-ai-agent-builder/user-research.svg",
-              alt: "User interviews validating the agent creation workflow",
-              caption:
-                "User interviews validating the agent creation workflow.",
-            },
-          ],
         },
       ],
     },
