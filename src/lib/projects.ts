@@ -507,6 +507,11 @@ export const projects: Project[] = [
       alt: "AI Agent Builder home screen (hero image)",
       caption: "",
     },
+    heroVideo: {
+      src: "/videos/charlotte-agent-builder-hero.mp4",
+      poster: "/images/case-studies/charlotte-ai-agent-builder/hero.png",
+      ariaLabel: "AI Agent Builder home screen (hero video)",
+    },
     thumbnailFit: "contain",
     executiveSummary: {
       overview: {

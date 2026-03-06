@@ -14,6 +14,8 @@ interface HeroVideoProps {
   ariaLabel?: string;
   variant?: "card" | "detail";
   className?: string;
+  /** "contain" shows full video (e.g. wide hero); "cover" fills the card. Default "cover". */
+  objectFit?: "contain" | "cover";
 }
 
 export function HeroVideo({
@@ -22,6 +24,7 @@ export function HeroVideo({
   ariaLabel = "AgentGuard AI Visibility hero animation",
   variant = "card",
   className = "",
+  objectFit = "cover",
 }: HeroVideoProps) {
   return (
     <div
@@ -36,7 +39,7 @@ export function HeroVideo({
         playsInline
         preload="metadata"
         aria-label={ariaLabel}
-        className="h-full w-full object-cover rounded-lg"
+        className={`h-full w-full rounded-lg ${objectFit === "contain" ? "object-contain object-center" : "object-cover"}`}
       />
     </div>
   );

@@ -300,15 +300,13 @@ export default async function CharlotteCaseStudyPage() {
             ))}
           </div>
           <figure className="w-full max-w-[1100px] mx-auto mt-8 mb-8 overflow-hidden rounded-[10px] border border-border bg-muted shadow-sm">
-            <Image
-              src={project.heroImage!.src}
-              alt={project.heroImage!.alt}
-              width={1196}
-              height={194}
-              sizes="(max-width: 768px) 100vw, 1100px"
-              quality={95}
+            <video
+              src="/videos/charlotte-agent-builder-hero.mp4"
+              poster={project.heroImage?.src}
+              autoPlay
+              muted
+              playsInline
               className="w-full h-auto object-contain object-center"
-              priority
             />
           </figure>
           {project.executiveSummary ? (

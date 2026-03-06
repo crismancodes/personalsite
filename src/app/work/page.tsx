@@ -46,6 +46,7 @@ export default function WorkIndexPage() {
                       poster={project.heroVideo.poster}
                       ariaLabel={project.heroVideo.ariaLabel}
                       variant="card"
+                      objectFit={project.thumbnailFit === "contain" ? "contain" : "cover"}
                     />
                   ) : project.heroImage ? (
                     <Image
