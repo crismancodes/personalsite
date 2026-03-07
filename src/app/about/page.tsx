@@ -7,7 +7,7 @@ export default function AboutPage() {
     <>
       <Section className="py-6 pt-8 md:py-8 md:pt-10">
         <Container className="max-w-3xl">
-          <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
+          <div className="flex flex-col gap-8 sm:flex-row sm:items-stretch sm:gap-10">
             <div className="min-w-0 flex-1 max-w-xl">
               <h1 className="font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
                 Designing systems that turn complexity into confidence.
@@ -24,13 +24,13 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <figure className="w-full shrink-0 sm:w-56 md:w-64">
+            <figure className="relative w-full shrink-0 sm:w-56 md:w-64 aspect-square sm:aspect-auto min-h-0 overflow-hidden rounded-lg border border-border">
               <Image
                 src="/images/professional-portrait.png"
                 alt="Sean Crisman"
-                width={320}
-                height={427}
-                className="rounded-lg border border-border object-cover shadow-sm"
+                fill
+                sizes="(min-width: 768px) 256px, 224px"
+                className="object-cover object-top shadow-sm"
               />
             </figure>
           </div>
