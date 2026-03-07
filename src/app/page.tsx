@@ -40,7 +40,7 @@ export default function HomePage() {
                 <Link href="#work">View selected work</Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <Link href="/about">About</Link>
+                <Link href="/contact">Get in touch</Link>
               </Button>
             </div>
           </Container>

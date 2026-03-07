@@ -9,14 +9,14 @@ import { Container } from "@/components/container";
 
 const navItems = [
   { href: "/", label: "HOME" },
-  { href: "/work", label: "Work" },
+  { href: "/work", label: "WORK" },
   { href: "/about", label: "ABOUT" },
   { href: "/contact", label: "CONTACT" },
 ];
 
 const mobileNavItems = [
   { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
+  { href: "/work", label: "WORK" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;

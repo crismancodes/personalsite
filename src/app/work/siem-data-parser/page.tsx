@@ -280,7 +280,7 @@ export default async function SIEMDataParserCaseStudyPage() {
             {project.title}
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            {project.summary}
+            {project.description} {project.summary}
           </p>
           {project.supportingLine ? (
             <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
