@@ -240,7 +240,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               <Reveal>
                 <CaseStudySection title="What I'd Do Next" content={project.whatNext} />
               </Reveal>
-              {project.reflections ? (
+              {project.reflections && project.slug !== "livestream-video-platform" ? (
                 <Reveal>
                   <CaseStudySection
                     title="Reflections & Learnings"
@@ -506,6 +506,28 @@ function renderBlocks(blocks: NonNullable<Exclude<CaseStudySectionContent, strin
             <p className="mt-4 text-muted-foreground leading-relaxed">{b.note}</p>
           ) : null}
         </div>
+      );
+    }
+
+    if (b.type === "callout") {
+      return (
+        <div
+          key={`${b.type}-${idx}`}
+          className="rounded-lg border border-border bg-muted/30 px-4 py-3 font-medium text-foreground leading-relaxed"
+        >
+          {b.text}
+        </div>
+      );
+    }
+
+    if (b.type === "quote") {
+      return (
+        <blockquote
+          key={`${b.type}-${idx}`}
+          className="border-l-4 border-accent pl-4 font-serif text-lg italic text-foreground leading-relaxed"
+        >
+          {b.text}
+        </blockquote>
       );
     }
 

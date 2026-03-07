@@ -138,6 +138,26 @@ function renderBlocks(blocks: NonNullable<Exclude<CaseStudySectionContent, strin
         </div>
       );
     }
+    if (b.type === "callout") {
+      return (
+        <div
+          key={`${b.type}-${idx}`}
+          className="rounded-lg border border-border bg-muted/30 px-4 py-3 font-medium text-foreground leading-relaxed"
+        >
+          {b.text}
+        </div>
+      );
+    }
+    if (b.type === "quote") {
+      return (
+        <blockquote
+          key={`${b.type}-${idx}`}
+          className="border-l-4 border-accent pl-4 font-serif text-lg italic text-foreground leading-relaxed"
+        >
+          {b.text}
+        </blockquote>
+      );
+    }
     return null;
   });
 }
@@ -280,7 +300,7 @@ export default async function CharlotteCaseStudyPage() {
             {project.title}
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            {project.summary}
+            {project.description} {project.summary}
           </p>
           <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
             <Image

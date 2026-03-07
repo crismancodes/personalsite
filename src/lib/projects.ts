@@ -13,6 +13,8 @@ export type CaseStudyBlock =
   | { type: "small"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "groups"; groups: { title: string; items: string[] }[] }
+  | { type: "callout"; text: string }
+  | { type: "quote"; text: string }
   | {
       type: "roleGrid";
       role: string;
@@ -498,7 +500,7 @@ export const projects: Project[] = [
     description:
       "Conversational AI agent creation platform for building, testing, and managing security automation agents.",
     summary:
-      "Conversational AI agent creation platform for building, testing, and managing security automation agents.",
+      "Enabled security analysts to build and deploy automation agents through conversation and configuration—no code required.",
     supportingLine: "CrowdStrike",
     tags: ["AI", "Security", "Automation", "Platform"],
     featured: true,
@@ -802,8 +804,20 @@ export const projects: Project[] = [
         },
       ],
     },
-    whatNext:
-      "Multi-agent orchestration and deeper integrations with enterprise data sources.",
+    whatNext: {
+      blocks: [
+        {
+          type: "ul",
+          items: [
+            "Agent run history showing when it fired, what actions it took, and what it returned",
+            "Sandbox and simulation mode for testing agents against historical data before production deployment",
+            "Approval and permissions layer for controlling who can create and promote agents in an enterprise environment",
+            "Agent health signals covering silent failures, LLM degradation, and unusual output patterns",
+            "Adaptive onboarding that evolves the builder experience as a user's familiarity grows",
+          ],
+        },
+      ],
+    },
   },
   {
     slug: "siem-data-parser",
@@ -1101,7 +1115,7 @@ export const projects: Project[] = [
       blocks: [
         {
           type: "p",
-          text: "Resi Media (pseudonym: Video Stream Co.) was building a live-streaming platform for broadcasters who needed enterprise-grade reliability, high video quality, and a professional viewer experience.",
+          text: "Resi Media was building a live-streaming platform for broadcasters who needed enterprise-grade reliability, high video quality, and a professional viewer experience.",
         },
         { type: "p", text: "The challenge was fragmentation." },
         {
@@ -1211,12 +1225,16 @@ export const projects: Project[] = [
           blocks: [
             {
               type: "p",
-              text: "Rather than designing isolated features, I mapped the end-to-end lifecycle:",
+              text: "Rather than designing isolated features, I framed the product around the end-to-end lifecycle. This ensured every surface — dashboard, library, playlists, player — worked as a cohesive system.",
             },
-            { type: "p", text: "Encode → Go Live → Monitor → Archive → Organize → Share → Analyze" },
+          ],
+        },
+        {
+          heading: "Streaming Lifecycle",
+          blocks: [
             {
-              type: "p",
-              text: "This ensured every surface — dashboard, library, playlists, player — worked as a cohesive system.",
+              type: "callout",
+              text: "Encode → Go Live → Monitor → Archive → Organize → Share → Analyze",
             },
           ],
         },
@@ -1380,13 +1398,16 @@ export const projects: Project[] = [
     outcomesImpact: {
       blocks: [
         {
+          type: "p",
+          text: "The team met or exceeded all three targets within the first broadcast season:",
+        },
+        {
           type: "ul",
           items: [
-            "Uptime and latency targets achieved",
-            "Reduced broadcaster friction during live events",
-            "Improved NPS across broadcasters and viewers",
-            "Increased content reuse through playlists",
-            "Stronger perception of platform reliability",
+            "Reliability: 99.9%+ uptime and sub-10s ingest-to-stream latency were achieved, giving broadcasters confidence during live events.",
+            "Operational clarity: The unified stream health dashboard reduced cognitive load and eliminated the need to juggle multiple tools while live.",
+            "Viewer experience and NPS: Improved player reliability, reduced buffering, and clearer controls contributed to higher NPS for both broadcasters and viewers.",
+            "Content reuse: Playlist usage and post-stream organization increased, turning one-off streams into reusable assets.",
           ],
         },
         {
@@ -1418,6 +1439,10 @@ export const projects: Project[] = [
     },
     reflections: {
       blocks: [
+        {
+          type: "quote",
+          text: "Designing for two audiences simultaneously — producers who need control and clarity, and viewers who need seamless playback — was the core design challenge.",
+        },
         { type: "p", text: "This project shaped how I think about platform design. It reinforced that:" },
         {
           type: "ul",
