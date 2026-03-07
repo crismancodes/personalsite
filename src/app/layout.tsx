@@ -23,6 +23,14 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: "Sean Crisman",
     url: "https://seancrisman.com",
+    title: "Sean Crisman — Product Design Leader",
+    description:
+      "Product design leader focused on AI platforms, enterprise systems, and complex product ecosystems.",
+    images: ["/images/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/og-image.png"],
   },
 };
 
@@ -31,8 +39,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Sean Crisman",
+    url: "https://seancrisman.com",
+  };
+
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>
