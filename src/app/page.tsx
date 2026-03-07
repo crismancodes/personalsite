@@ -15,24 +15,6 @@ import { FractalGradientBackground } from "@/components/fractal-gradient-backgro
 import { LogoMarquee } from "@/components/logo-marquee";
 import { getFeaturedProjects } from "@/lib/projects";
 
-const approachColumns = [
-  {
-    title: "Vision",
-    description:
-      "Define product direction and identify where clarity creates competitive advantage.",
-  },
-  {
-    title: "Systems",
-    description:
-      "Design frameworks and workflows that scale across teams and features.",
-  },
-  {
-    title: "Execution",
-    description:
-      "Partner closely with product and engineering to ship high-impact solutions.",
-  },
-];
-
 export default function HomePage() {
   const featured = getFeaturedProjects();
 
@@ -137,30 +119,6 @@ export default function HomePage() {
               <Button asChild>
                 <Link href="/work">View all work</Link>
               </Button>
-            </div>
-          </Container>
-        </Section>
-
-        {/* Approach */}
-        <Section id="approach">
-          <Container>
-            <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
-              Approach
-            </h2>
-            <p className="mt-2 text-muted-foreground">
-              Strategic vision grounded in systems thinking and rigorous execution.
-            </p>
-            <div className="mt-12 grid gap-10 md:grid-cols-3">
-              {approachColumns.map((col) => (
-                <div key={col.title}>
-                  <h3 className="font-serif text-lg font-semibold text-foreground">
-                    {col.title}
-                  </h3>
-                  <p className="mt-2 text-muted-foreground leading-relaxed">
-                    {col.description}
-                  </p>
-                </div>
-              ))}
             </div>
           </Container>
         </Section>

@@ -19,10 +19,6 @@ export default function AboutPage() {
                   SaaS products.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  I turn ambiguity into working systems, strategy into shipped
-                  software, and complexity into usable structure.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
                   The best products don&apos;t just function. They create
                   clarity, and clarity builds trust.
                 </p>
@@ -41,7 +37,48 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section id="philosophy" className="bg-muted/30 py-6 md:py-8">
+      <Section id="how-i-work" className="bg-muted/30 py-6 md:py-8">
+        <Container className="max-w-3xl">
+          <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl mb-4">
+            How I Work
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            I operate across three layers: Direction, Systems, Execution.
+          </p>
+          <div className="mt-10 grid gap-8 md:grid-cols-3">
+            <div>
+              <h3 className="font-serif text-lg font-semibold text-foreground">
+                Direction
+              </h3>
+              <p className="mt-2 text-muted-foreground leading-relaxed">
+                Clarifying product intent and aligning it with real user workflows and
+                technical feasibility.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-serif text-lg font-semibold text-foreground">
+                Systems
+              </h3>
+              <p className="mt-2 text-muted-foreground leading-relaxed">
+                Designing scalable architectures, reusable components, and interaction
+                frameworks that engineering teams can build on with confidence.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-serif text-lg font-semibold text-foreground">
+                Execution
+              </h3>
+              <p className="mt-2 text-muted-foreground leading-relaxed">
+                Staying close to production. Prototyping in React and Next.js when
+                necessary. Using AI-assisted workflows to translate design thinking
+                directly into working front-end code.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="philosophy" className="py-6 md:py-8">
         <Container className="max-w-3xl">
           <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl mb-4">
             Philosophy
@@ -56,66 +93,7 @@ export default function AboutPage() {
           <p className="mt-4 text-muted-foreground leading-relaxed">
             I design for scale from day one. That means thinking in systems: data
             models, state management, information architecture, and constraints
-            — not just surface-level UI.
-          </p>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            I focus on:
-          </p>
-          <ul className="mt-2 list-disc space-y-1.5 pl-6 text-muted-foreground leading-relaxed">
-            <li>
-              Translating product strategy into system-level interaction models
-            </li>
-            <li>
-              Designing extensible patterns across teams and features
-            </li>
-            <li>
-              Reducing cognitive load in high-density enterprise interfaces
-            </li>
-            <li>
-              Shipping work that drives measurable business impact
-            </li>
-          </ul>
-        </Container>
-      </Section>
-
-      <Section id="how-i-work" className="py-6 md:py-8">
-        <Container className="max-w-3xl">
-          <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl mb-4">
-            How I Work
-          </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            I operate across three layers: Direction, Systems, Execution.
-          </p>
-
-          <h3 className="mt-6 mb-2 font-serif text-lg font-medium tracking-tight text-foreground">
-            Direction
-          </h3>
-          <p className="text-muted-foreground leading-relaxed">
-            Clarifying product intent and aligning it with real user workflows and
-            technical feasibility.
-          </p>
-
-          <h3 className="mt-6 mb-2 font-serif text-lg font-medium tracking-tight text-foreground">
-            Systems
-          </h3>
-          <p className="text-muted-foreground leading-relaxed">
-            Designing scalable architectures, reusable components, and interaction
-            frameworks that engineering teams can build on with confidence.
-          </p>
-
-          <h3 className="mt-6 mb-2 font-serif text-lg font-medium tracking-tight text-foreground">
-            Execution
-          </h3>
-          <p className="text-muted-foreground leading-relaxed">
-            Staying close to production. Prototyping in React and Next.js when
-            necessary. Using tools like Cursor and AI-assisted workflows to
-            translate design thinking directly into working front-end code.
-          </p>
-          <p className="mt-4 font-medium text-foreground leading-relaxed">
-            Design does not end in Figma.
-          </p>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            I lead through output, clarity, and ownership.
+            &mdash; not just surface-level UI.
           </p>
         </Container>
       </Section>
